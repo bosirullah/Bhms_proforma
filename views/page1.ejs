@@ -1,0 +1,56 @@
+<%- include("partials/header") %>
+    
+    <div class="page">
+        <h1 class="proforma mb-4">CASE TAKING PROFORMA</h1>   
+        <h2 class="mb-4">1. IDENTIFICATION</h2>
+        <form action="" id="page1">
+            <label for="ref_no">Ref no :</label>
+            <input type="text" id="ref_no" class="mt-4">
+
+            <input type="date" id="date">
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label mb-3 mt-4">Name: </label>
+                    <textarea type="text" id="name" class="form-control" name="fullName"></textarea>
+                </div>
+                <div class="col">
+                    <label for="age" class="form-label mb-3 mt-4">Age: </label>
+                    <textarea type="text" id="age" class="form-control" name="age"></textarea>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <label for="address" class="form-label mb-3 mt-4">Address: </label>
+                    <textarea type="text" id="address" class="form-control" name="address"></textarea> <br>
+                </div>
+                <div class="col">
+                    <label for="sex" class="form-label mb-3 mt-4">Sex: </label>
+                    <textarea type="text" id="sex" class="form-control" name="sex"></textarea><br>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <label for="contact" class="form-label mb-3 mt-4">Contact: </label>
+                    <textarea type="text" id="contact" class="form-control" name="contact"></textarea>
+                </div>
+                <div class="col">
+                    <label for="religion" class="form-label mb-3 mt-4">Religion: </label>
+                    <textarea type="text" id="religion" class="form-control" name="religion"></textarea><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="occupation" class="form-label mb-3 mt-4">Occupation: </label>
+                    <textarea type="text" id="occupation" class="form-control" name="occupation"></textarea><br> 
+                </div>
+            </div>       
+        </form>
+    
+    </div>
+    
+
+
+<%- include("partials/footer") %>
