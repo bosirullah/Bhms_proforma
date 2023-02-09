@@ -3,11 +3,11 @@
     <div class="page">
         <h1 class="proforma mb-4">CASE TAKING PROFORMA</h1>   
         <h2 class="mb-4">1. IDENTIFICATION</h2>
-        <form action="" id="page1">
+        <form action="/page1" id="page1" method="post">
             <label for="ref_no">Ref no :</label>
-            <input type="text" id="ref_no" class="mt-4">
+            <input type="text" name="ref_no" id="ref_no" class="mt-4">
 
-            <input type="date" id="date">
+            <input type="date" name="date" id="date">
             <div class="row">
                 <div class="col">
                     <label for="name" class="form-label mb-3 mt-4">Name: </label>
@@ -46,7 +46,9 @@
                     <label for="occupation" class="form-label mb-3 mt-4">Occupation: </label>
                     <textarea type="text" id="occupation" class="form-control" name="occupation"></textarea><br> 
                 </div>
-            </div>       
+            </div>   
+            
+            <button type="submit" class="btn btn-outline-dark">Send</button>
         </form>
     
     </div>

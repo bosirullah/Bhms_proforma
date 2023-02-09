@@ -8,7 +8,7 @@
                 <button class="remove btn btn-outline-danger"><i class="fa-solid fa-minus"></i></button>
             </div>
         </div>
-        <form action="" id="form5">
+        <form action="/page5" id="form5" method="post">
             <div class="container-fluid">
                 <table class="table table-bordered">
                     <thead>
@@ -23,13 +23,15 @@
                     <tbody id="nextRow">
                         <tr class="row">
                             <td class="col-1">1</td>
-                            <td class="col-2 p-0"><input type="date"></td>
-                            <td class="col-4 p-0"><textarea name="" class="text" ></textarea></td>
-                            <td class="col-5 p-0" style = "height: 30px"><textarea name="" class="text" "></textarea></td>
+                            <td class="col-2 p-0"><input type="date" name="date"></td>
+                            <td class="col-4 p-0"><textarea name="remarks" class="text" ></textarea></td>
+                            <td class="col-5 p-0" style = "height: 30px"><textarea name="rx" class="text" "></textarea></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <button type="submit" class="btn btn-outline-dark">Send</button>
         </form>
     </div>
 

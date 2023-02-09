@@ -3,7 +3,7 @@
 
     <div class="page">
         <h2>2. HISTORY</h2>
-        <form action="" id="form2">
+        <form action="/page2" id="form2" method="post">
             <div class="row">
                 <div >
                     <h4 class="col mt-3 mb-3">(A) PRESENT COMPLAINTS :</h4>
@@ -104,9 +104,11 @@
                     <textarea name="walking" id="walking" class="form-control"></textarea>
                 </div>
             </div>
-            <div class="col">
-                <label for="vaccination" class="mb-3 mt-3">Vaccination :</label>
-                <textarea name="vaccination" id="vaccination" class="form-control"></textarea>
+            <div class="row">
+                <div class="col">
+                    <label for="vaccination" class="mb-3 mt-3">Vaccination :</label>
+                    <textarea name="vaccination" id="vaccination" class="form-control"></textarea>
+                </div>
             </div>
 
             <div class="row">
@@ -216,7 +218,7 @@
             <h5 class="mt-5 text-center">Paternal side</h5>
             <div class="row">
                 <div class="col">
-                    <label for="fther" class="form-label">Father :</label>
+                    <label for="father" class="form-label">Father :</label>
                     <textarea name="father" id="father" class="form-control"></textarea>
                 </div>
                 <div class="col">
@@ -248,32 +250,32 @@
             <h5 class="mt-5 text-center">Maternal side</h5>
             <div class="row">
                 <div class="col">
-                    <label for="fther" class="form-label">Mother :</label>
-                    <textarea name="father" id="father" class="form-control"></textarea>
+                    <label for="m_father" class="form-label">Mother :</label>
+                    <textarea name="m_father" id="m_father" class="form-control"></textarea>
                 </div>
                 <div class="col">
-                    <label for="uncle" class="form-label">Maternal Uncle :</label>
-                    <textarea name="uncle" id="uncle" class="form-control"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="grandfather" class="form-label">Grandfather :</label>
-                    <textarea name="grandfather" id="grandfather" class="form-control"></textarea>
-                </div>
-                <div class="col">
-                    <label for="aunt" class="form-label">Maternal Aunt :</label>
-                    <textarea name="aunt" id="aunt" class="form-control"></textarea>
+                    <label for="m_uncle" class="form-label">Maternal Uncle :</label>
+                    <textarea name="m_uncle" id="m_uncle" class="form-control"></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="grandmother" class="form-label">Grandmother :</label>
-                    <textarea name="grandmother" id="grandmother" class="form-control"></textarea>
+                    <label for="m_grandfather" class="form-label">Grandfather :</label>
+                    <textarea name="m_grandfather" id="m_grandfather" class="form-control"></textarea>
                 </div>
                 <div class="col">
-                    <label for="others" class="form-label">Others :</label>
-                    <textarea name="others" id="others" class="form-control"></textarea>
+                    <label for="m_aunt" class="form-label">Maternal Aunt :</label>
+                    <textarea name="m_aunt" id="m_aunt" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="m_grandmother" class="form-label">Grandmother :</label>
+                    <textarea name="m_grandmother" id="m_grandmother" class="form-control"></textarea>
+                </div>
+                <div class="col">
+                    <label for="m_others" class="form-label">Others :</label>
+                    <textarea name="m_others" id="m_others" class="form-control"></textarea>
                 </div>
             </div>
 
@@ -294,8 +296,8 @@
                     <textarea name="children" id="children" class="form-control"></textarea>
                 </div>
                 <div class="col">
-                    <label for="others" class="form-label">Others :</label>
-                    <textarea name="others" id="others" class="form-control"></textarea>
+                    <label for="own_others" class="form-label">Others :</label>
+                    <textarea name="own_others" id="own_others" class="form-control"></textarea>
                 </div>
             </div>
 
@@ -337,6 +339,8 @@
                     <textarea name="sex_h" id="sex_h" class="form-control"></textarea>
                 </div>
             </div>
+
+            <button type="submit" class="btn btn-outline-dark">Send</button>
         </form>
     </div>
 
