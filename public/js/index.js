@@ -5,22 +5,27 @@ const removeRow = $(".remove-row");
 const nextRow = $("#nextRow");
 const rowNext = $("#rowNext");
 
-function resizingTextarea(){
-    $("textarea").each(function () {
-        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-        }).on("input", function () {
-        this.style.height = 0;
-        this.style.height = (this.scrollHeight) + "px";
+function resizingTextarea() {
+  $("textarea")
+    .each(function () {
+      this.setAttribute(
+        "style",
+        "height:" + this.scrollHeight + "px;overflow-y:hidden;"
+      );
+    })
+    .on("input", function () {
+      this.style.height = 0;
+      this.style.height = this.scrollHeight + "px";
     });
-    
-    $("textarea").trigger("input");
+
+  $("textarea").trigger("input");
 }
 
 resizingTextarea();
 
-addRow.on("click",()=>{
-    rowNext.append(
-        `
+addRow.on("click", () => {
+  rowNext.append(
+    `
             <tr>
                 <td class="col-2 p-0">
                     <select name="disease_name" id="disease_name" class="w-10">
@@ -68,24 +73,24 @@ addRow.on("click",()=>{
                 <td class="col-2 p-0"><textarea name="" id="text2" class="text"></textarea></td>                          
             </tr>
         `
-    )
-})
+  );
+});
 
-addBtn.on("click",()=>{
-    nextRow.append(
-        `
+addBtn.on("click", () => {
+  nextRow.append(
+    `
             <tr class="row">
                 <td class="col-1">1</td>
-                <td class="col-2 p-0"><input type="date"></td>
+                <td class="col-3 p-0"><input type="date"></td>
                 <td class="col-4 p-0"><textarea name="" class="text" ></textarea></td>
-                <td class="col-5 p-0"><textarea name="" class="text" ></textarea></td>
+                <td class="col-4 p-0"><textarea name="" class="text" ></textarea></td>
             </tr>
         
         `
-    )  
+  );
 
-    resizingTextarea();
-})
+  resizingTextarea();
+});
 
 // removeBtn.on("click",()=>{
 //     $("#nextRow tr:last-child").remove();
