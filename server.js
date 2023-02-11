@@ -17,7 +17,7 @@ const patientsSchema = {
 const pageList = [];
 
 app.get("/",(req,res)=>{
-    res.render("page1");
+    res.render("login");
 });
 
 app.get("/:customRouteName",(req,res)=>{
