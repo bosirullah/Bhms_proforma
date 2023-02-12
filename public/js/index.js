@@ -92,6 +92,9 @@ addBtn.on("click", () => {
   resizingTextarea();
 });
 
-// removeBtn.on("click",()=>{
-//     $("#nextRow tr:last-child").remove();
-// })
+removeBtn.on("click",()=>{
+    $("#nextRow tr:last-child").remove();
+})
+
+const inputVal = $(".input_val input");
+
