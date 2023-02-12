@@ -51,7 +51,7 @@ app.post("/home",(req,res)=>{
         else console.log("Successfull");
     })
     // res.send(req.body);
-    res.render("preview",{patientDetails: req.body}); 
+    res.render("preview",{patientDetails: req.body});
 })
 
 const PORT = process.env.PORT || 3000;
