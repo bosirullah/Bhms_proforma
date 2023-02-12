@@ -10,12 +10,6 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const patientsSchema = {
-    pages: []
-}
-
-const pageList = [];
-
 app.get("/",(req,res)=>{
     res.render("login");
 });
@@ -29,48 +23,36 @@ app.get("/*", (req, res) => {
     res.render("errorPage");
 })
 
+app.get("/preview",(req,res)=>{
+    Patient.find((err,patient)=>{
+        if(err) console.log(err);
+        else{
+            res.send(patient);
+        }
+    })
 
-
-app.post("/page1",(req,res)=>{
-    pageList.push(req.body);
-    res.render("page2");
+    // res.send(req.body);
 })
 
-app.post("/page2",(req,res)=>{
-    pageList.push(req.body);
-    res.render("page3");
+app.get("/home",(req,res)=>{
+    res.render("home");
 })
 
-app.post("/page3",(req,res)=>{
-    pageList.push(req.body);
-    res.render("page4");
+
+
+app.post("/",(req,res)=>{
+    res.render("home");
 })
 
-app.post("/page4",(req,res)=>{
-    pageList.push(req.body);
-    res.render("page5");
-})
-
-app.post("/page5",(req,res)=>{
-    pageList.push(req.body);
-    const patient = new Patient({ pages: pageList })
+app.post("/home",(req,res)=>{
+    const patient = new Patient({ pages: req.body })
     Patient.insertMany(patient,(err)=>{
         if(err) console.log(err);
         else console.log("Successfull");
     })
-    
-    Patient.find((err,patients)=>{
-        if(err)console.log(err);
-        else{
-            const jsonDATA = JSON.stringify(patients);
-            // res.send(patients[0].pages)
-            res.render("display",{patientDetails: jsonDATA});
-        }
-        pageList.length = 0;
-    })
+    // res.send(req.body);
+    res.render("preview",{patientDetails: req.body}); 
 })
-
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{

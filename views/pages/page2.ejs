@@ -1,0 +1,343 @@
+<h2 class="py-4">2. HISTORY</h2>
+<div class="row">
+    <div>
+        <h4 class="col mt-4 mb-3">(A) PRESENT COMPLAINTS :</h4>
+        <textarea name="complaints1" id="complaints1" class="form-control"></textarea>
+    </div>
+    <div class="col">
+        <h4 class="col mt-4 mb-3">(B) HISTORY OF PRESENT COMPLAINTS :</h4>
+        <textarea name="complaints2" id="complaints2" class="form-control"></textarea>
+    </div>
+</div>
+
+<!-- <hr> -->
+<h4 class="col mt-5 mb-3">(C) HISTORY OF PAST ILLNESS : </h4>
+<h5 class="col mt-4">(a) Intra uterine life(mother's state of health during gestation) :</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="vomiting" class="mb-3 mt-3">Vomiting :</label>
+        <textarea name="vomiting" id="vomiting" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="skn_ds" class="mb-3 mt-3">Skin disease :</label>
+        <textarea name="skn_ds" id="skn_ds" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="diabetes" class="mb-3 mt-3">Diabetes :</label>
+        <textarea name="diabetes" id="diabetes" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="thyroid" class="mb-3 mt-3">Thyroid :</label>
+        <textarea name="thyroid" id="thyroid" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="hypertension" class="mb-3 mt-3">Hypertension :</label>
+        <textarea name="hypertension" id="hypertension" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="injury" class="mb-3 mt-3">Injury/Accident :</label>
+        <textarea name="injury" id="injury" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="operation" class="mb-3 mt-3">Operation :</label>
+        <textarea name="operation" id="operation" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="venereal" class="mb-3 mt-3">Venereal :</label>
+        <textarea name="venereal" id="venereal" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="anaemia" class="mb-3 mt-3">Anaemia :</label>
+        <textarea name="anaemia" id="anaemia" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="vaccination" class="mb-3 mt-3">Vaccination :</label>
+        <textarea name="vaccination" id="vaccination" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <label for="mental_st" class="mb-3 mt-3">Mental state :</label>
+        <textarea name="mental_st" id="mental_st" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="other_disease" class="mb-3 mt-3">Any other disease :</label>
+        <textarea name="other_disease" id="other_disease" class="form-control"></textarea>
+    </div>
+</div>
+
+<!-- <hr> -->
+
+<h5 class="mt-5 mb-3">(b) Birth history :</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="birth_weight" class="mb-3 mt-3">Birth weight :</label>
+        <textarea name="birth_weight" id="birth_weight" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="birth_rash" class="mb-3 mt-3">Birth rash :</label>
+        <textarea name="birth_rash" id="birth_rash" class="form-control"></textarea>
+    </div>
+</div>
+
+<h5 class="mt-5 mb-0">Milestones :</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="neck_holding" class="mb-3 mt-3">Neck holding :</label>
+        <textarea name="neck_holding" id="neck_holding" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="walking" class="mb-3 mt-3">Walking :</label>
+        <textarea name="walking" id="walking" class="form-control"></textarea>
+    </div>
+</div>
+<div class="col">
+    <label for="vaccination_bh" class="mb-3 mt-3">Vaccination :</label>
+    <textarea name="vaccination_bh" id="vaccination_bh" class="form-control"></textarea>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="teething" class="mb-3 mt-3">Teething :</label>
+        <textarea name="teething" id="teething" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="talking" class="mb-3 mt-3">Talking :</label>
+        <textarea name="talking" id="talking" class="form-control"></textarea>
+    </div>
+</div>
+
+
+<!-- <hr> -->
+
+<div class="container-fluid mt-5">
+    <div class="buttons my-4">
+        <button class="add-row btn btn-outline-success px-4 py-3 text-bold display-6">+</button>
+        <button class="remove-row btn btn-outline-danger px-4 py-3 text-bold display-6">-</button>
+    </div>
+    <table id="page2_table" class="table table-bordered">
+        <thead>
+            <th class="col-2 text-white">Name of</th>
+            <th class="col-4 text-white">Time of</th>
+            <th class="col-4 text-white">Treatme</th>
+            <th class="col-2 text-white">Result & side</th>
+        </thead>
+
+        <tbody id="rowNext">
+            <tr>
+                <td class="col-2 p-0">
+                    <select name="disease_name" id="disease_name" class="w-10 select_area">
+                        <option value="1">Typhoid</option>
+                        <option value="2">Malaria</option>
+                        <option value="3">Dengue</option>
+                        <option value="4">Chikungunya</option>
+                        <option value="5">Measles</option>
+                        <option value="6">Jaundice</option>
+                        <option value="7">Mumps</option>
+                        <option value="8">Ch. Pox</option>
+                        <option value="9">Diphtheria</option>
+                        <option value="10">Diarrhoea</option>
+                        <option value="11">Pneumonia</option>
+                        <option value="12">Tuberculosis</option>
+                        <option value="13">Asthma</option>
+                        <option value="14">Rheumatic fever</option>
+                        <option value="15">Tonsillitis</option>
+                        <option value="16">Tumours</option>
+                        <option value="17">Warts</option>
+                        <option value="18">Ringworm</option>
+                        <option value="19">Other skin disease</option>
+                        <option value="20">Otorrhoea</option>
+                        <option value="21">Convulsion</option>
+                        <option value="22">Rectal disease</option>
+                        <option value="23">Hernia</option>
+                        <option value="24">Scrotal swelling</option>
+                        <option value="25">Scrotal swelling</option>
+                        <option value="26">Gall bladder stone</option>
+                        <option value="27">Rheumatism</option>
+                        <option value="28">Carcinoma</option>
+                        <option value="29">Unconscious</option>
+                        <option value="30">Burn</option>
+                        <option value="31">Other</option>
+                        <option value="32">injury/accident</option>
+                        <option value="33">Sexual indulgence</option>
+                        <option value="35">Venereal diseases</option>
+                        <option value="36">Abuse of drugs</option>
+                        <option value="37">Radiation</option>
+                        <option value="38">Thyroid</option>
+                        <option value="39">Animal bite & vaccination</option>
+                    </select>
+                </td>
+                <td class="col-4 p-0"><textarea name="" id="text2" class="text"></textarea></td>
+                <td class="col-4 p-0"><textarea name="" id="text2" class="text"></textarea></td>
+                <td class="col-2 p-0"><textarea name="" id="text2" class="text"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <hr> -->
+
+<h5 class="mt-5">(c) FEMALE DISEASES</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="menarche" class="form-label">Menarche :</label>
+        <textarea name="menarche" id="menarche" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="menopause" class="form-label">Menopause :</label>
+        <textarea name="menopause" id="menopause" class="form-control"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <label for="pregnancy" class="form-label">Pregnancy :</label>
+        <textarea name="pregnancy" id="pregnancy" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="oth_disease" class="form-label">Other diseases :</label>
+        <textarea name="oth_disease" id="oth_disease" class="form-control"></textarea>
+    </div>
+</div>
+
+<!-- <hr> -->
+<h4 class="mt-5">(D) FAMILY HISTORY : </h4>
+<h5 class="mt-5 text-center">Paternal side</h5>
+<div class="row">
+    <div class="col">
+        <label for="father" class="form-label">Father :</label>
+        <textarea name="father" id="father" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="uncle" class="form-label">Paternal Uncle :</label>
+        <textarea name="uncle" id="uncle" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="grandfather" class="form-label">Grandfather :</label>
+        <textarea name="grandfather" id="grandfather" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="aunt" class="form-label">Paternal Aunt :</label>
+        <textarea name="aunt" id="aunt" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="grandmother" class="form-label">Grandmother :</label>
+        <textarea name="grandmother" id="grandmother" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="paternal_others" class="form-label">Others :</label>
+        <textarea name="paternal_others" id="paternal_others" class="form-control"></textarea>
+    </div>
+</div>
+
+<h5 class="mt-5 text-center">Maternal side</h5>
+<div class="row">
+    <div class="col">
+        <label for="mother" class="form-label">Mother :</label>
+        <textarea name="mother" id="mother" class="form-control"></textarea>
+    </div>
+    <div class="col">
+        <label for="maternal_uncle" class="form-label">Maternal Uncle :</label>
+        <textarea name="maternal_uncle" id="maternal_uncle" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label for="maternal_grandfather" class="form-label">Grandfather :</label>
+        <textarea name="maternal_grandfather" id="maternal_grandfather" class="form-control"></textarea>
+    </div>
+    <div class="col">
+        <label for="maternal_aunt" class="form-label">Maternal Aunt :</label>
+        <textarea name="maternal_aunt" id="maternal_aunt" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <label for="maternal_grandmother" class="form-label">Grandmother :</label>
+        <textarea name="maternal_grandmother" id="maternal_grandmother" class="form-control"></textarea>
+    </div>
+    <div class="col">
+        <label for="maternal_others" class="form-label">Others :</label>
+        <textarea name="maternal_others" id="maternal_others" class="form-control"></textarea>
+    </div>
+</div>
+
+<h5 class="mt-5 text-center">Own side</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="wife_hus" class="form-label">Wife/Husband :</label>
+        <textarea name="wife_hus" id="wife_hus" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="siblings" class="form-label">Siblings :</label>
+        <textarea name="siblings" id="siblings" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="children" class="form-label">Children :</label>
+        <textarea name="children" id="children" class="form-control"></textarea>
+    </div>
+    <div class="col">
+        <label for="others" class="form-label">Others :</label>
+        <textarea name="others" id="others" class="form-control"></textarea>
+    </div>
+</div>
+
+<!-- <hr> -->
+<h5 class="mt-5">(E) PERSONAL HISTORY :</h5>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="addiction" class="form-label">Addiction :</label>
+        <textarea name="addiction" id="addiction" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="history_occupation" class="form-label">Occupation :</label>
+        <textarea name="history_occupation" id="history_occupation" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="accommodation" class="form-label">Accommodation :</label>
+        <textarea name="accommodation" id="accommodation" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="diet" class="form-label">Diet :</label>
+        <textarea name="diet" id="diet" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="mar_stat" class="form-label">Marital status :</label>
+        <textarea name="mar_stat" id="mar_stat" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <label for="habits" class="form-label">Habits & Hobbies :</label>
+        <textarea name="habits" id="habits" class="form-control"></textarea>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-sm-6">
+        <label for="sex_h" class="form-label">Sexual History :</label>
+        <textarea name="sex_h" id="sex_h" class="form-control"></textarea>
+    </div>
+</div>
+
