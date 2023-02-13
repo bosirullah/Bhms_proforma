@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+    <div class="page">
+        <form action="/form" method="post">
+            <%- include("pages/page1") %>
+            <%- include("pages/page2") %>
+            <%- include("pages/page3") %>
+            <%- include("pages/page4") %>
+            <%- include("pages/page5") %>
+            <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
+                <button type="submit" class="btn btn-primary rounded px-4 text-white">Preview</button>
+            </div> 
+        </form>
+        
+    </div>
+<%- include("partials/footer") %>

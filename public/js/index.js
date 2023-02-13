@@ -95,6 +95,3 @@ addBtn.on("click", () => {
 removeBtn.on("click",()=>{
     $("#nextRow tr:last-child").remove();
 })
-
-const inputVal = $(".input_val input");
-

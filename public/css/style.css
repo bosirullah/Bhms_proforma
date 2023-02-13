@@ -199,6 +199,14 @@ body {
   border-top-right-radius: 0;
 }
 
+textarea:disabled, input:disabled{
+  color: grey;
+}
+
+.form-control:disabled{
+  background-color: red;
+}
+
 
 /* Login mobile responsive  */
 @media (max-width: 420px) {

@@ -24,35 +24,54 @@ app.get("/*", (req, res) => {
 })
 
 app.get("/preview",(req,res)=>{
-    Patient.find((err,patient)=>{
-        if(err) console.log(err);
-        else{
-            res.send(patient);
-        }
-    })
-
+    // Patient.find((err,patient)=>{
+    //     if(err) console.log(err);
+    //     else{
+    //         res.send(patient);
+    //     }
+    // })
+    res.render("home");
     // res.send(req.body);
 })
-
-app.get("/home",(req,res)=>{
-    res.render("home");
-})
-
-
 
 app.post("/",(req,res)=>{
     res.render("home");
 })
 
 app.post("/home",(req,res)=>{
-    const patient = new Patient({ pages: req.body })
+    const ref_no = req.body.ref_no;
+    const fullName = req.body.fullName;
+    const phoneNo = req.body.phoneNo;
+
+    Patient.find((err,patients)=>{
+        if(err) console.log(err);
+        else{
+            // res.send(patients[1].pages.ref_no);
+            patients.forEach((patient)=>{
+                // console.log(patient.pages.ref_no);
+                if(ref_no === patient.pages.ref_no || fullName === patient.pages.fullName || phoneNo === patient.pages.contact){
+                    res.render("preview",{patientDetails: patient.pages});
+                }
+            })
+        }
+    })
+})
+
+let patient;
+app.post("/form",(req,res)=>{
+    patient = new Patient({ pages: req.body })
+    res.render("preview",{patientDetails: req.body}); 
+})
+
+app.post("/preview",(req,res)=>{
+    // if(Patient.findById(patient))
     Patient.insertMany(patient,(err)=>{
         if(err) console.log(err);
         else console.log("Successfull");
     })
-    // res.send(req.body);
-    res.render("preview",{patientDetails: req.body}); 
+    res.render("home",{patientDetails : req.body});
 })
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{
