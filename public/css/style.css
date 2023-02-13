@@ -357,8 +357,7 @@ body {
   padding: 3rem 0;
 }
 .form_box:last-child {
-  border-bottom: none;
-  /* padding: 3rem 0; */
+  border: 2px solid red;
 }
 .form_box:first-child {
   padding-top: 0;
