@@ -1,9 +1,25 @@
 <%- include("partials/header") %>
-
-    <form action="/home" method="post">
-        <label for="">Enter reference no:</label><br>
-        <input type="number" name="ref_no" placeholder="Enter reference no" autocomplete="off">
-        <button class="btn btn-outline-success">Search</button>
+    <div class="page">
+        <form action="/home" method="post">
+            <fieldset class="form_box">
+                <%- include("pages/page1") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page2") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page3") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page4") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page5") %>
+            </fieldset>
+            <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
+                <button type="submit" class="btn btn-warning ounded px-4 text-white">Submit</button>
+            </div> 
+        </form>
         
         <br>
         <label for="">Enter name: </label><br>

@@ -5,8 +5,8 @@
     <button class="remove btn btn-outline-danger px-4 py-3"><i class="fa-solid fa-minus"></i></button>
 </div>
 </div>
-<div class="container-fluid">
-    <table class="table table-bordered">
+<div class="container-fluid p-0 rounded-pill">
+    <!-- <table class="table table-bordered">
         <thead>
             <tr class="row">
                 <th class="col-1 text-white">#</th>
@@ -24,8 +24,25 @@
                 <td class="col-4 p-0" style = "height: 30px"><textarea name="" class="text" "></textarea></td>
             </tr>
         </tbody>
+    </table> -->
+
+
+    <table class="table table-dark table-striped table-bordered text-white rounded">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">DATE</th>
+            <th scope="col">REMARKS</th>
+            <th scope="col">RX</th>
+          </tr>
+        </thead>
+        <tbody id="nextRow">
+          <tr>
+            <th scope="row">1</th>
+            <td class="text-uppercase"><input class="w-100" type="date" name="" id=""></td>
+            <td><textarea class="w-100"></textarea>
+            <td><textarea class="w-100"></textarea>
+          </tr>
+        </tbody>
     </table>
 </div>
-
-
-

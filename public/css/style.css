@@ -359,3 +359,14 @@ textarea:disabled, input:disabled{
     background-attachment: fixed;
   }
 }
+
+.form_box {
+  border-bottom: 1px solid #5f5f5f;
+  padding: 3rem 0;
+}
+.form_box:last-child {
+  border: 2px solid red;
+}
+.form_box:first-child {
+  padding-top: 0;
+}
