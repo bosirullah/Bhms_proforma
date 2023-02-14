@@ -4,11 +4,13 @@
         <form action="/" method="post" class="form-signin border position-relative top-50">
             <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" alt="" width="72" height="72">
             <h2 class="text-center text-white">Login Here!</h2>
-            <label for="inputEmail" class="sr-only">Username</label>
-            <input type="text" id="inputEmail" class="form-control" autocomplete="off" placeholder="Username" required
+            <!-- <label for="inputEmail" class="sr-only">Username</label> -->
+            <input type="text" id="inputEmail" class="form-control my-4" autocomplete="off" placeholder="Username" required
                 autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
+            <!-- <label for="inputPassword" class="sr-only">Password</label> -->
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto" type="submit">Log in</button>
         </form>
     </div>
+
+<%- include("partials/footer"); -%>
