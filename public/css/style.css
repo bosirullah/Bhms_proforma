@@ -42,10 +42,9 @@ h5 {
 }
 
 .page {
-  /* padding: 1.5rem 2rem;
-  border-radius: 20px; */
-  /* height: 100vh; */
-  margin: 20% 0;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  height: 100vh;
 }
 
 .heading {
