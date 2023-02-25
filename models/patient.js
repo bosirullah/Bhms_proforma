@@ -8,3 +8,4 @@ const patientSchema = new mongoose.Schema({
 const Patient = connection.model("Patient",patientSchema);
 
 module.exports = Patient;
+
