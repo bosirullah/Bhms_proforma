@@ -1,52 +1,52 @@
+
+
 <h1 class="mb-4 main_heading">CASE TAKING PROFORMA</h1>
 <h2 class="py-4">1. IDENTIFICATION</h2>
 <div class="row align-items-center gap-2 mt-4">
     <label for="ref_no">Ref no :</label>
     <div class="col">
-        <input type="text" id="ref_no" name="ref_no">
+        <input type="text" id="ref_no" name="ref_no" value="<%= patientDetails.ref_no %>">
     </div>
     <div class="col">
-        <input type="date" id="date" class="w-auto" name="date">
+        <input type="date" id="date" class="w-auto" name="date" value="<%= patientDetails.date %>">
     </div>
 </div>
 <div class="row mt-5">
     <div class="col-md-6">
         <label for="name" class="form-label mb-3 mt-4">Name: </label>
-        <textarea type="text" id="name" class="form-control" name="fullName"></textarea>
+        <textarea type="text" id="name" class="form-control" name="fullName"><%= patientDetails.fullName %></textarea>
     </div>
     <div class="col-md-6">
         <label for="age" class="form-label mb-3 mt-4">Age: </label>
-        <textarea type="text" id="age" class="form-control" name="age"></textarea>
+        <textarea type="text" id="age" class="form-control" name="age"><%= patientDetails.age %></textarea>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
         <label for="address" class="form-label mb-3 mt-4">Address: </label>
-        <textarea type="text" id="address" class="form-control" name="address"></textarea> <br>
+        <textarea type="text" id="address" class="form-control" name="address"><%= patientDetails.address %></textarea> <br>
     </div>
     <div class="col-md-6">
         <label for="sex" class="form-label mb-3 mt-4">Sex: </label>
-        <textarea type="text" id="sex" class="form-control" name="sex"></textarea><br>
+        <textarea type="text" id="sex" class="form-control" name="sex"><%= patientDetails.sex%></textarea><br>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
         <label for="contact" class="form-label mb-3 mt-2">Contact: </label>
-        <textarea type="text" id="contact" class="form-control" name="contact"></textarea>
+        <textarea type="text" id="contact" class="form-control" name="contact"><%= patientDetails.contact %></textarea>
     </div>
     <div class="col-md-6">
         <label for="religion" class="form-label mb-3 mt-2">Religion: </label>
-        <textarea type="text" id="religion" class="form-control" name="religion"></textarea><br>
-    </div>
-    
-    <div class="col-md-12">
-        <label for="occupation" class="form-label mb-3 mt-2">Occupation: </label>
-        <textarea type="text" id="occupation" class="form-control" name="occupation"></textarea><br> 
+        <textarea type="text" id="religion" class="form-control" name="religion"><%= patientDetails.religion %></textarea><br>
     </div>
 </div>
 
 <div class="row">
-</div>   
-
+    <div class="col-md-12">
+        <label for="occupation" class="form-label mb-3 mt-2">Occupation: </label>
+        <textarea type="text" id="occupation" class="form-control" name="occupation"><%= patientDetails.occupation %></textarea><br> 
+    </div>
+</div> 
