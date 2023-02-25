@@ -1,202 +1,204 @@
 <%- include("partials/header") %>
-    <form action="/preview" method="post">
-        <div class="page input_val">     
-            <h1 class="mb-4 main_heading">CASE TAKING PROFORMA</h1>
-            <h2 class="py-4">1. IDENTIFICATION</h2>
-            <div class="row align-items-center gap-2 mt-4">
-                <label for="ref_no">Ref no :</label>
-                <div class="col">
-                    <input disabled type="text" id="ref_no" name="ref_no" value="<%= patientDetails.ref_no %>">
+    <div class="page">
+        <form action="/preview" method="post">
+            <div class="page input_val">     
+                <h1 class="mb-4 main_heading">CASE TAKING PROFORMA</h1>
+                <h2 class="py-4">1. IDENTIFICATION</h2>
+                <div class="row align-items-center gap-2 mt-4">
+                    <label for="ref_no">Ref no :</label>
+                    <div class="col">
+                        <input disabled type="text" id="ref_no" name="ref_no" value="<%= patientDetails.ref_no %>">
+                    </div>
+                    <div class="col">
+                        <input disabled type="date" id="date" class="w-auto" name="date" value="<%= patientDetails.date %>">
+                    </div>
                 </div>
-                <div class="col">
-                    <input disabled type="date" id="date" class="w-auto" name="date" value="<%= patientDetails.date %>">
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label mb-3 mt-4">Name: </label>
+                        <textarea disabled type="text" id="name" class="form-control" name="fullName"><%= patientDetails.fullName %></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="age" class="form-label mb-3 mt-4">Age: </label>
+                        <textarea disabled type="text" id="age" class="form-control" name="age"><%= patientDetails.age %></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    <label for="name" class="form-label mb-3 mt-4">Name: </label>
-                    <textarea disabled type="text" id="name" class="form-control" name="fullName"><%= patientDetails.fullName %></textarea>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="address" class="form-label mb-3 mt-4">Address: </label>
+                        <textarea disabled type="text" id="address" class="form-control" name="address"><%= patientDetails.address %></textarea> <br>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sex" class="form-label mb-3 mt-4">Sex: </label>
+                        <textarea disabled type="text" id="sex" class="form-control" name="sex"><%= patientDetails.sex%></textarea><br>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="age" class="form-label mb-3 mt-4">Age: </label>
-                    <textarea disabled type="text" id="age" class="form-control" name="age"><%= patientDetails.age %></textarea>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="contact" class="form-label mb-3 mt-2">Contact: </label>
+                        <textarea disabled type="text" id="contact" class="form-control" name="contact"><%= patientDetails.contact %></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="religion" class="form-label mb-3 mt-2">Religion: </label>
+                        <textarea disabled type="text" id="religion" class="form-control" name="religion"><%= patientDetails.religion %></textarea><br>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="address" class="form-label mb-3 mt-4">Address: </label>
-                    <textarea disabled type="text" id="address" class="form-control" name="address"><%= patientDetails.address %></textarea> <br>
-                </div>
-                <div class="col-md-6">
-                    <label for="sex" class="form-label mb-3 mt-4">Sex: </label>
-                    <textarea disabled type="text" id="sex" class="form-control" name="sex"><%= patientDetails.sex%></textarea><br>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="contact" class="form-label mb-3 mt-2">Contact: </label>
-                    <textarea disabled type="text" id="contact" class="form-control" name="contact"><%= patientDetails.contact %></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="religion" class="form-label mb-3 mt-2">Religion: </label>
-                    <textarea disabled type="text" id="religion" class="form-control" name="religion"><%= patientDetails.religion %></textarea><br>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <label for="occupation" class="form-label mb-3 mt-2">Occupation: </label>
-                    <textarea disabled type="text" id="occupation" class="form-control" name="occupation"><%= patientDetails.occupation %></textarea><br> 
-                </div>
-            </div>   
-            
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="occupation" class="form-label mb-3 mt-2">Occupation: </label>
+                        <textarea disabled type="text" id="occupation" class="form-control" name="occupation"><%= patientDetails.occupation %></textarea><br> 
+                    </div>
+                </div>   
+                
 
 
 
-            <h2 class="py-4">2. HISTORY</h2>
-            <div class="row">
-                <div>
-                    <h4 class="col mt-4 mb-3">(A) PRESENT COMPLAINTS :</h4>
-                    <textarea disabled name="complaints1" id="complaints1" class="form-control"><%= patientDetails.complaints1 %></textarea>
+                <h2 class="py-4">2. HISTORY</h2>
+                <div class="row">
+                    <div>
+                        <h4 class="col mt-4 mb-3">(A) PRESENT COMPLAINTS :</h4>
+                        <textarea disabled name="complaints1" id="complaints1" class="form-control"><%= patientDetails.complaints1 %></textarea>
+                    </div>
+                    <div class="col">
+                        <h4 class="col mt-4 mb-3">(B) HISTORY OF PRESENT COMPLAINTS :</h4>
+                        <textarea disabled name="complaints2" id="complaints2" class="form-control"><%= patientDetails.complaints2 %></textarea>
+                    </div>
                 </div>
-                <div class="col">
-                    <h4 class="col mt-4 mb-3">(B) HISTORY OF PRESENT COMPLAINTS :</h4>
-                    <textarea disabled name="complaints2" id="complaints2" class="form-control"><%= patientDetails.complaints2 %></textarea>
-                </div>
-            </div>
 
-            <h4 class="col mt-5 mb-3">(C) HISTORY OF PAST ILLNESS : </h4>
-            <h5 class="col mt-4">(a) Intra uterine life(mother's state of health during gestation) :</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="vomiting" class="mb-3 mt-3">Vomiting :</label>
-                    <textarea disabled name="vomiting" id="vomiting" class="form-control"><%= patientDetails.vomiting %></textarea>
+                <h4 class="col mt-5 mb-3">(C) HISTORY OF PAST ILLNESS : </h4>
+                <h5 class="col mt-4">(a) Intra uterine life(mother's state of health during gestation) :</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="vomiting" class="mb-3 mt-3">Vomiting :</label>
+                        <textarea disabled name="vomiting" id="vomiting" class="form-control"><%= patientDetails.vomiting %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="skn_ds" class="mb-3 mt-3">Skin disease :</label>
+                        <textarea disabled name="skn_ds" id="skn_ds" class="form-control"><%= patientDetails.skn_ds %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="skn_ds" class="mb-3 mt-3">Skin disease :</label>
-                    <textarea disabled name="skn_ds" id="skn_ds" class="form-control"><%= patientDetails.skn_ds %></textarea>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="diabetes" class="mb-3 mt-3">Diabetes :</label>
-                    <textarea disabled name="diabetes" id="diabetes" class="form-control"><%= patientDetails.diabetes%></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="diabetes" class="mb-3 mt-3">Diabetes :</label>
+                        <textarea disabled name="diabetes" id="diabetes" class="form-control"><%= patientDetails.diabetes%></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="thyroid" class="mb-3 mt-3">Thyroid :</label>
+                        <textarea disabled name="thyroid" id="thyroid" class="form-control"><%= patientDetails.thyroid %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="thyroid" class="mb-3 mt-3">Thyroid :</label>
-                    <textarea disabled name="thyroid" id="thyroid" class="form-control"><%= patientDetails.thyroid %></textarea>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="hypertension" class="mb-3 mt-3">Hypertension :</label>
-                    <textarea disabled name="hypertension" id="hypertension" class="form-control"><%= patientDetails.hypertension %></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="hypertension" class="mb-3 mt-3">Hypertension :</label>
+                        <textarea disabled name="hypertension" id="hypertension" class="form-control"><%= patientDetails.hypertension %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="injury" class="mb-3 mt-3">Injury/Accident :</label>
+                        <textarea disabled name="injury" id="injury" class="form-control"><%= patientDetails.injury%></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="injury" class="mb-3 mt-3">Injury/Accident :</label>
-                    <textarea disabled name="injury" id="injury" class="form-control"><%= patientDetails.injury%></textarea>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="operation" class="mb-3 mt-3">Operation :</label>
-                    <textarea disabled name="operation" id="operation" class="form-control" ><%= patientDetails.operation%></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="operation" class="mb-3 mt-3">Operation :</label>
+                        <textarea disabled name="operation" id="operation" class="form-control" ><%= patientDetails.operation%></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="venereal" class="mb-3 mt-3">Venereal :</label>
+                        <textarea disabled name="venereal" id="venereal" class="form-control"><%= patientDetails.venereal %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="venereal" class="mb-3 mt-3">Venereal :</label>
-                    <textarea disabled name="venereal" id="venereal" class="form-control"><%= patientDetails.venereal %></textarea>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="anaemia" class="mb-3 mt-3">Anaemia :</label>
-                    <textarea disabled name="anaemia" id="anaemia" class="form-control"><%= patientDetails.anaemia%></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="anaemia" class="mb-3 mt-3">Anaemia :</label>
+                        <textarea disabled name="anaemia" id="anaemia" class="form-control"><%= patientDetails.anaemia%></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="vaccination" class="mb-3 mt-3">Vaccination :</label>
+                        <textarea disabled name="vaccination" id="vaccination" class="form-control"><%= patientDetails.vaccination%></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="vaccination" class="mb-3 mt-3">Vaccination :</label>
-                    <textarea disabled name="vaccination" id="vaccination" class="form-control"><%= patientDetails.vaccination%></textarea>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
 
-                    <label for="mental_st" class="mb-3 mt-3">Mental state :</label>
-                    <textarea disabled name="mental_st" id="mental_st" class="form-control"><%= patientDetails.mental_st %></textarea>
+                        <label for="mental_st" class="mb-3 mt-3">Mental state :</label>
+                        <textarea disabled name="mental_st" id="mental_st" class="form-control"><%= patientDetails.mental_st %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="other_disease" class="mb-3 mt-3">Any other disease :</label>
+                        <textarea disabled name="other_disease" id="other_disease" class="form-control"><%= patientDetails.other_disease %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="other_disease" class="mb-3 mt-3">Any other disease :</label>
-                    <textarea disabled name="other_disease" id="other_disease" class="form-control"><%= patientDetails.other_disease %></textarea>
-                </div>
-            </div>
-
-            <!-- <hr> -->
-
-            <h5 class="mt-5 mb-3">(b) Birth history :</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="birth_weight" class="mb-3 mt-3">Birth weight :</label>
-                    <textarea disabled name="birth_weight" id="birth_weight" class="form-control"><%= patientDetails.birth_weight %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="birth_rash" class="mb-3 mt-3">Birth rash :</label>
-                    <textarea disabled name="birth_rash" id="birth_rash" class="form-control"><%= patientDetails.birth_rash %></textarea>
-                </div>
-            </div>
-
-            <h5 class="mt-5 mb-0">Milestones :</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="neck_holding" class="mb-3 mt-3">Neck holding :</label>
-                    <textarea disabled name="neck_holding" id="neck_holding" class="form-control"><%= patientDetails.neck_holding %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="walking" class="mb-3 mt-3">Walking :</label>
-                    <textarea disabled name="walking" id="walking" class="form-control"><%= patientDetails.walking %></textarea>
-                </div>
-            </div>
-            <div class="col">
-                <label for="vaccination_bh" class="mb-3 mt-3">Vaccination :</label>
-                <textarea disabled name="vaccination_bh" id="vaccination_bh" class="form-control"><%= patientDetails.vaccination_bh%></textarea>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="teething" class="mb-3 mt-3">Teething :</label>
-                    <textarea disabled name="teething" id="teething" class="form-control"><%= patientDetails.teething %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="talking" class="mb-3 mt-3">Talking :</label>
-                    <textarea disabled name="talking" id="talking" class="form-control"><%= patientDetails.talking %></textarea>
-                </div>
-            </div>
-
 
                 <!-- <hr> -->
 
-            <div class="container-fluid mt-5">
-                <div class="buttons my-4">
-                    <button class="add-row btn btn-outline-success px-4 py-3 text-bold display-6">+</button>
-                    <button class="remove-row btn btn-outline-danger px-4 py-3 text-bold display-6">-</button>
+                <h5 class="mt-5 mb-3">(b) Birth history :</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="birth_weight" class="mb-3 mt-3">Birth weight :</label>
+                        <textarea disabled name="birth_weight" id="birth_weight" class="form-control"><%= patientDetails.birth_weight %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="birth_rash" class="mb-3 mt-3">Birth rash :</label>
+                        <textarea disabled name="birth_rash" id="birth_rash" class="form-control"><%= patientDetails.birth_rash %></textarea>
+                    </div>
                 </div>
-                <table id="page2_table" class="table table-bordered">
-                    <thead>
-                        <th class="col-2 text-white">Name of</th>
-                        <th class="col-4 text-white">Time of</th>
-                        <th class="col-4 text-white">Treatme</th>
-                        <th class="col-2 text-white">Result & side</th>
-                    </thead>
 
-                    <tbody id="rowNext">
-                        <tr>
-                            <td class="col-2 p-0">
-                                <select name="disease_name" id="disease_name" class="w-10 select_area">
+                <h5 class="mt-5 mb-0">Milestones :</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="neck_holding" class="mb-3 mt-3">Neck holding :</label>
+                        <textarea disabled name="neck_holding" id="neck_holding" class="form-control"><%= patientDetails.neck_holding %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="walking" class="mb-3 mt-3">Walking :</label>
+                        <textarea disabled name="walking" id="walking" class="form-control"><%= patientDetails.walking %></textarea>
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="vaccination_bh" class="mb-3 mt-3">Vaccination :</label>
+                    <textarea disabled name="vaccination_bh" id="vaccination_bh" class="form-control"><%= patientDetails.vaccination_bh%></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="teething" class="mb-3 mt-3">Teething :</label>
+                        <textarea disabled name="teething" id="teething" class="form-control"><%= patientDetails.teething %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="talking" class="mb-3 mt-3">Talking :</label>
+                        <textarea disabled name="talking" id="talking" class="form-control"><%= patientDetails.talking %></textarea>
+                    </div>
+                </div>
+
+
+                    <!-- <hr> -->
+
+                <div class="container-fluid mt-5">
+                    <div class="buttons my-4">
+                        <button class="add-row btn btn-outline-success px-4 py-3 text-bold display-6">+</button>
+                        <button class="remove-row btn btn-outline-danger px-4 py-3 text-bold display-6">-</button>
+                    </div>
+                    <table class="table table-dark table-striped table-bordered text-white rounded">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name Of</th>
+                            <th scope="col">Time Of</th>
+                            <th scope="col">Treatment</th>
+                            <th scope="col">Result & Side</th>
+                          </tr>
+                        </thead>
+                        <tbody id="nextRow">
+                          <tr>
+                            <td>
+                                <select name="disease_name" id="disease_name" class="select_area" style="padding: 0.8rem;">
                                     <option value="1">Typhoid</option>
                                     <option value="2">Malaria</option>
                                     <option value="3">Dengue</option>
@@ -233,356 +235,357 @@
                                     <option value="35">Venereal diseases</option>
                                     <option value="36">Abuse of drugs</option>
                                     <option value="37">Radiation</option>
-                                    <option value="38">Animal bite & vaccination</option>
+                                    <option value="38">Thyroid</option>
+                                    <option value="39">Animal bite & vaccination</option>
                                 </select>
                             </td>
-                            <td class="col-4 p-0"><textarea disabled name="" id="text2" class="text"></textarea></td>
-                            <td class="col-4 p-0"><textarea disabled name="" id="text2" class="text"></textarea></td>
-                            <td class="col-2 p-0"><textarea disabled name="" id="text2" class="text"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <td><textarea class="w-100"></textarea>
+                            <td><textarea class="w-100"></textarea>
+                            <td><textarea class="w-100"></textarea>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- <hr> -->
+
+                <h5 class="mt-5">(c) FEMALE DISEASES</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="menarche" class="form-label">Menarche :</label>
+                        <textarea disabled name="menarche" id="menarche" class="form-control"><%= patientDetails.menarche %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="menopause" class="form-label">Menopause :</label>
+                        <textarea disabled name="menopause" id="menopause" class="form-control"><%= patientDetails.menopause %></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="pregnancy" class="form-label">Pregnancy :</label>
+                        <textarea disabled name="pregnancy" id="pregnancy" class="form-control"><%= patientDetails.pregnancy %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="oth_disease" class="form-label">Other diseases :</label>
+                        <textarea disabled name="oth_disease" id="oth_disease" class="form-control"><%= patientDetails.oth_disease %></textarea>
+                    </div>
+                </div>
 
                 <!-- <hr> -->
+                <h4 class="mt-5">(D) FAMILY HISTORY : </h4>
+                <h5 class="mt-5 text-center">Paternal side</h5>
+                <div class="row">
+                    <div class="col">
+                        <label for="father" class="form-label">Father :</label>
+                        <textarea disabled name="father" id="father" class="form-control"><%= patientDetails.father %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="uncle" class="form-label">Paternal Uncle :</label>
+                        <textarea disabled name="uncle" id="uncle" class="form-control"><%= patientDetails.uncle %></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="grandfather" class="form-label">Grandfather :</label>
+                        <textarea disabled name="grandfather" id="grandfather" class="form-control"><%= patientDetails.grandfather %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="aunt" class="form-label">Paternal Aunt :</label>
+                        <textarea disabled name="aunt" id="aunt" class="form-control"><%= patientDetails.aunt %></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="grandmother" class="form-label">Grandmother :</label>
+                        <textarea disabled name="grandmother" id="grandmother" class="form-control"><%= patientDetails.grandmother %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="paternal_others" class="form-label">Others :</label>
+                        <textarea disabled name="paternal_others" id="paternal_others" class="form-control"><%= patientDetails.paternal_others %></textarea>
+                    </div>
+                </div>
 
-            <h5 class="mt-5">(c) FEMALE DISEASES</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="menarche" class="form-label">Menarche :</label>
-                    <textarea disabled name="menarche" id="menarche" class="form-control"><%= patientDetails.menarche %></textarea>
+                <h5 class="mt-5 text-center">Maternal side</h5>
+                <div class="row">
+                    <div class="col">
+                        <label for="mother" class="form-label">Mother :</label>
+                        <textarea disabled name="mother" id="mother" class="form-control"><%= patientDetails.mother %></textarea>
+                    </div>
+                    <div class="col">
+                        <label for="maternal_uncle" class="form-label">Maternal Uncle :</label>
+                        <textarea disabled name="maternal_uncle" id="maternal_uncle" class="form-control"><%= patientDetails.maternal_uncle %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="menopause" class="form-label">Menopause :</label>
-                    <textarea disabled name="menopause" id="menopause" class="form-control"><%= patientDetails.menopause %></textarea>
+                <div class="row">
+                    <div class="col">
+                        <label for="maternal_grandfather" class="form-label">Grandfather :</label>
+                        <textarea disabled name="maternal_grandfather" id="maternal_grandfather" class="form-control"><%= patientDetails.maternal_grandfather %></textarea>
+                    </div>
+                    <div class="col">
+                        <label for="maternal_aunt" class="form-label">Maternal Aunt :</label>
+                        <textarea disabled name="maternal_aunt" id="maternal_aunt" class="form-control"><%= patientDetails.maternal_aunt %></textarea>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="maternal_grandmother" class="form-label">Grandmother :</label>
+                        <textarea disabled name="maternal_grandmother" id="maternal_grandmother" class="form-control"><%= patientDetails.maternal_grandmother %></textarea>
+                    </div>
+                    <div class="col">
+                        <label for="maternal_others" class="form-label">Others :</label>
+                        <textarea disabled name="maternal_others" id="maternal_others" class="form-control"><%= patientDetails.maternal_others %></textarea>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="pregnancy" class="form-label">Pregnancy :</label>
-                    <textarea disabled name="pregnancy" id="pregnancy" class="form-control"><%= patientDetails.pregnancy %></textarea>
+                <h5 class="mt-5 text-center">Own side</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="wife_hus" class="form-label">Wife/Husband :</label>
+                        <textarea disabled name="wife_hus" id="wife_hus" class="form-control"><%= patientDetails.wife_hus %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="siblings" class="form-label">Siblings :</label>
+                        <textarea disabled name="siblings" id="siblings" class="form-control"><%= patientDetails.siblings %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="oth_disease" class="form-label">Other diseases :</label>
-                    <textarea disabled name="oth_disease" id="oth_disease" class="form-control"><%= patientDetails.oth_disease %></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="children" class="form-label">Children :</label>
+                        <textarea disabled name="children" id="children" class="form-control"><%= patientDetails.children %></textarea>
+                    </div>
+                    <div class="col">
+                        <label for="others" class="form-label">Others :</label>
+                        <textarea disabled name="others" id="others" class="form-control"><%= patientDetails.others %></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <!-- <hr> -->
-            <h4 class="mt-5">(D) FAMILY HISTORY : </h4>
-            <h5 class="mt-5 text-center">Paternal side</h5>
-            <div class="row">
-                <div class="col">
-                    <label for="father" class="form-label">Father :</label>
-                    <textarea disabled name="father" id="father" class="form-control"><%= patientDetails.father %></textarea>
+                <!-- <hr> -->
+                <h5 class="mt-5">(E) PERSONAL HISTORY :</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="addiction" class="form-label">Addiction :</label>
+                        <textarea disabled name="addiction" id="addiction" class="form-control"><%= patientDetails.addiction %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="occupation" class="form-label">Occupation :</label>
+                        <textarea disabled name="occupation" id="occupation" class="form-control"><%= patientDetails.occupation %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="uncle" class="form-label">Paternal Uncle :</label>
-                    <textarea disabled name="uncle" id="uncle" class="form-control"><%= patientDetails.uncle %></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="accommodation" class="form-label">Accommodation :</label>
+                        <textarea disabled name="accommodation" id="accommodation" class="form-control"><%= patientDetails.accommodation %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="diet" class="form-label">Diet :</label>
+                        <textarea disabled name="diet" id="diet" class="form-control"><%= patientDetails.diet %></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="grandfather" class="form-label">Grandfather :</label>
-                    <textarea disabled name="grandfather" id="grandfather" class="form-control"><%= patientDetails.grandfather %></textarea>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="mar_stat" class="form-label">Marital status :</label>
+                        <textarea disabled name="mar_stat" id="mar_stat" class="form-control"><%= patientDetails.mar_stat %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="habits" class="form-label">Habits & Hobbies :</label>
+                        <textarea disabled name="habits" id="habits" class="form-control"><%= patientDetails.habits %></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label for="aunt" class="form-label">Paternal Aunt :</label>
-                    <textarea disabled name="aunt" id="aunt" class="form-control"><%= patientDetails.aunt %></textarea>
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <label for="sex_h" class="form-label">Sexual History :</label>
+                        <textarea disabled name="sex_h" id="sex_h" class="form-control"><%= patientDetails.sex_h %></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="grandmother" class="form-label">Grandmother :</label>
-                    <textarea disabled name="grandmother" id="grandmother" class="form-control"><%= patientDetails.grandmother %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="paternal_others" class="form-label">Others :</label>
-                    <textarea disabled name="paternal_others" id="paternal_others" class="form-control"><%= patientDetails.paternal_others %></textarea>
-                </div>
-            </div>
 
-            <h5 class="mt-5 text-center">Maternal side</h5>
-            <div class="row">
-                <div class="col">
-                    <label for="mother" class="form-label">Mother :</label>
-                    <textarea disabled name="mother" id="mother" class="form-control"><%= patientDetails.mother %></textarea>
-                </div>
-                <div class="col">
-                    <label for="maternal_uncle" class="form-label">Maternal Uncle :</label>
-                    <textarea disabled name="maternal_uncle" id="maternal_uncle" class="form-control"><%= patientDetails.maternal_uncle %></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="maternal_grandfather" class="form-label">Grandfather :</label>
-                    <textarea disabled name="maternal_grandfather" id="maternal_grandfather" class="form-control"><%= patientDetails.maternal_grandfather %></textarea>
-                </div>
-                <div class="col">
-                    <label for="maternal_aunt" class="form-label">Maternal Aunt :</label>
-                    <textarea disabled name="maternal_aunt" id="maternal_aunt" class="form-control"><%= patientDetails.maternal_aunt %></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="maternal_grandmother" class="form-label">Grandmother :</label>
-                    <textarea disabled name="maternal_grandmother" id="maternal_grandmother" class="form-control"><%= patientDetails.maternal_grandmother %></textarea>
-                </div>
-                <div class="col">
-                    <label for="maternal_others" class="form-label">Others :</label>
-                    <textarea disabled name="maternal_others" id="maternal_others" class="form-control"><%= patientDetails.maternal_others %></textarea>
-                </div>
-            </div>
-
-            <h5 class="mt-5 text-center">Own side</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="wife_hus" class="form-label">Wife/Husband :</label>
-                    <textarea disabled name="wife_hus" id="wife_hus" class="form-control"><%= patientDetails.wife_hus %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="siblings" class="form-label">Siblings :</label>
-                    <textarea disabled name="siblings" id="siblings" class="form-control"><%= patientDetails.siblings %></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="children" class="form-label">Children :</label>
-                    <textarea disabled name="children" id="children" class="form-control"><%= patientDetails.children %></textarea>
-                </div>
-                <div class="col">
-                    <label for="others" class="form-label">Others :</label>
-                    <textarea disabled name="others" id="others" class="form-control"><%= patientDetails.others %></textarea>
-                </div>
-            </div>
-
-            <!-- <hr> -->
-            <h5 class="mt-5">(E) PERSONAL HISTORY :</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="addiction" class="form-label">Addiction :</label>
-                    <textarea disabled name="addiction" id="addiction" class="form-control"><%= patientDetails.addiction %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="occupation" class="form-label">Occupation :</label>
-                    <textarea disabled name="occupation" id="occupation" class="form-control"><%= patientDetails.occupation %></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="accommodation" class="form-label">Accommodation :</label>
-                    <textarea disabled name="accommodation" id="accommodation" class="form-control"><%= patientDetails.accommodation %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="diet" class="form-label">Diet :</label>
-                    <textarea disabled name="diet" id="diet" class="form-control"><%= patientDetails.diet %></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="mar_stat" class="form-label">Marital status :</label>
-                    <textarea disabled name="mar_stat" id="mar_stat" class="form-control"><%= patientDetails.mar_stat %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="habits" class="form-label">Habits & Hobbies :</label>
-                    <textarea disabled name="habits" id="habits" class="form-control"><%= patientDetails.habits %></textarea>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col-sm-6">
-                    <label for="sex_h" class="form-label">Sexual History :</label>
-                    <textarea disabled name="sex_h" id="sex_h" class="form-control"><%= patientDetails.sex_h %></textarea>
-                </div>
-            </div>
-
-                
-            
-
-            <h2 class="py-4">3. HOMOEOPATHIC GENERALITIES</h2>
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="tongue" class="form-label">Tongue :</label>
-                    <textarea disabled id="tongue" name="tongue" class="form-control mb-3"><%= patientDetails.tongue %></textarea> 
-                </div>
-                <div class="col-sm-6">
-                    <label for="thirst" class="form-label">Thirst :</label>
-                    <textarea disabled id="thirst" name="thirst" class="form-control mb-4"><%= patientDetails.thirst %></textarea>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="appetite" class="form-label">Appetite :</label>
-                    <textarea disabled id="appetite" name="appetite" class="form-control mb-4"><%= patientDetails.appetite %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="desire" class="form-label">Desire :</label>
-                    <textarea disabled id="desire" name="desire" class="form-control mb-4"><%= patientDetails.desire %></textarea>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="aversion" class="form-label">Aversion :</label>
-                    <textarea disabled id="aversion" name="aversion" class="form-control mb-4"><%= patientDetails.aversion %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="reaction" class="form-label">Reaction to heat & cold :</label>
-                    <textarea disabled id="reaction" name="reaction" class="form-control mb-4"><%= patientDetails.reaction %></textarea>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="hyper" class="form-label">Hyper susceptibility :</label>
-                    <textarea disabled id="hyper" name="hyper_susceptibility" class="form-control mb-4"><%= patientDetails.hyper %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="sleep" class="form-label">Sleep :</label>
-                    <textarea disabled id="sleep" name="sleep" class="form-control mb-4"><%= patientDetails.sleep %></textarea>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="position" class="form-label">Position of sleep : </label>
-                    <textarea disabled id="position" name="position" class="form-control mb-4"><%= patientDetails.position %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="dream" class="form-label">Dream :</label>
-                    <textarea disabled id="dream" name="dream" class="form-control mb-4"><%= patientDetails.dream %></textarea>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="periodicity" class="form-label">Periodicity :</label>
-                    <textarea disabled id="periodicity" name="periodicity class="form-control mb-4"><%= patientDetails.periodicity %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="sides" class="form-label">Sides of body :</label>
-                    <textarea disabled id="sides" name="sides" class="form-control mb-4"><%= patientDetails.sides %></textarea>        
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="mental" class="form-label">Mental generals :</label>
-                    <textarea disabled id="mental" name="mental" class="form-control mb-4"><%= patientDetails.mental %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="modality" class="form-label">General modality :</label>
-                    <textarea disabled id="modality" name="modality" class="form-control mb-4"><%= patientDetails.modality %></textarea>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="other" class="form-label">Other General :</label>
-                    <textarea disabled id="other" name="other_general" class="form-control mb-4"><%= patientDetails.other %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="constitution" class="form-label">Constitution :</label>
-                    <textarea disabled id="constitution" name="constitution" class="form-control mb-4"><%= patientDetails.constitution %></textarea>
-                </div>
-            </div>
-
-            <!-- <hr> -->
-            <h2 class="mt-3 mb-3">Discharge</h2>
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="stool" class="form-label">Stool :</label>
-                    <textarea disabled id="stool" name="stool" class="form-control mb-4"><%= patientDetails.stool %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="urine" class="form-label">Urine :</label>
-                    <textarea disabled id="urine" name="urine" class="form-control mb-4"><%= patientDetails.urine %></textarea>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="sweat" class="form-label">Sweat :</label>
-                    <textarea disabled id="sweat" name="sweat" class="form-control mb-4"><%= patientDetails.sweat %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="mensturation" class="form-label">Mensturation :</label>
-                    <textarea disabled id="mensturation" name="mensturation" class="form-control mb-4"><%= patientDetails.mensturation %></textarea>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-sm-6">
-                    <label for="leucorrhoea" class="form-label">Lucorrhoea :</label>
-                    <textarea disabled id="leucorrhoea" name="leucorrhoea" class="form-control mb-4"><%= patientDetails.leucorrhoea %></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label for="emission" class="form-label">Seminal emission :</label>
-                    <textarea disabled id="emission" name="semimal_emission" class="form-control mb-4"><%= patientDetails.emission %></textarea>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-sm-12">
-                    <label for="alteration" class="form-label">Alteration :</label>
-                    <textarea disabled id="alteration" name="alteration" class="form-control mb-4"><%= patientDetails.alteration %></textarea>
-                </div>
-            </div>
-            
-
-        
-            <h2 class="py-4">4. SELECTION OF REMEDY</h2>
-            <p><label for="characteristics" class="form-label mt-3">i. Finding of Characteristics :</label></p>
-            <textarea disabled class="form-control" name=" find_characteristics" id="characteristics" ><%= patientDetails.characteristics %></textarea>
-
-            <p><label for="evaluation_of_symptoms" class="form-label mt-3">ii. Evaluation of symptoms :</label></p>
-            <textarea disabled class="form-control" name=" evaluation_of_symptoms" id="evaluation_of_symptoms" ><%= patientDetails.evaluation_of_symptoms %></textarea>
-
-            <p><label for="analysis_of_case" class="form-label mt-3">iii. Analysis of case :</label><%= patientDetails.analysis_of_case %></p>
-            <textarea disabled class="form-control" name="analysis_of_case" id="analysis_of_case" ></textarea>
-
-            <p><label for="repertorisation" class="form-label mt-3">iv. Repertorisation (competing remedies) :</label></p>
-            <textarea disabled class="form-control" name=" repertorisation" id="repertorisation" ><%= patientDetails.repertorisation %></textarea>
-
-            <p><label for="basis_of_selction" class="form-label mt-3">v. Basis of selection :</label></p>
-            <textarea disabled class="form-control mb-4" name=" basis_of_selction" id="basis_of_selction" ><%= patientDetails.basis_of_selction %></textarea>   
-        
-
-        
-            <div class="heading mb-4">
-                <h2>PRESCRIPTION & FOLLOW UP</h2>
-                <div class="buttons">
-                    <button class="add btn btn-outline-success px-4 py-3"><i class="fa-solid fa-plus"></i></button>
-                    <button class="remove btn btn-outline-danger px-4 py-3"><i class="fa-solid fa-minus"></i></button>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr class="row">
-                            <th class="col-1 text-white">#</th>
-                            <th class="col-3 text-white">DATE</th>
-                            <th class="col-4 text-white">REMARKS</th>
-                            <th class="col-4 text-white">Rx</th>
-                        </tr>
-                    </thead>
                     
-                    <tbody id="nextRow">
-                        <tr class="row">
-                            <td class="col-1 text-white">1</td>
-                            <td class="col-3 p-0 text-uppercase"><input type="date"></td>
-                            <td class="col-4 p-0"><textarea disabled name="" class="text" ></textarea></td>
-                            <td class="col-4 p-0" style = "height: 30px"><textarea disabled name="" class="text" "></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                
 
-            <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
-                <button type="submit" class="btn btn-warning rounded px-4 text-white">Submit</button>
-            </div>  
-        </div>
-    </form>
+                <h2 class="py-4">3. HOMOEOPATHIC GENERALITIES</h2>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="tongue" class="form-label">Tongue :</label>
+                        <textarea disabled id="tongue" name="tongue" class="form-control mb-3"><%= patientDetails.tongue %></textarea> 
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="thirst" class="form-label">Thirst :</label>
+                        <textarea disabled id="thirst" name="thirst" class="form-control mb-4"><%= patientDetails.thirst %></textarea>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="appetite" class="form-label">Appetite :</label>
+                        <textarea disabled id="appetite" name="appetite" class="form-control mb-4"><%= patientDetails.appetite %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="desire" class="form-label">Desire :</label>
+                        <textarea disabled id="desire" name="desire" class="form-control mb-4"><%= patientDetails.desire %></textarea>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="aversion" class="form-label">Aversion :</label>
+                        <textarea disabled id="aversion" name="aversion" class="form-control mb-4"><%= patientDetails.aversion %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="reaction" class="form-label">Reaction to heat & cold :</label>
+                        <textarea disabled id="reaction" name="reaction" class="form-control mb-4"><%= patientDetails.reaction %></textarea>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="hyper" class="form-label">Hyper susceptibility :</label>
+                        <textarea disabled id="hyper" name="hyper_susceptibility" class="form-control mb-4"><%= patientDetails.hyper %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="sleep" class="form-label">Sleep :</label>
+                        <textarea disabled id="sleep" name="sleep" class="form-control mb-4"><%= patientDetails.sleep %></textarea>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="position" class="form-label">Position of sleep : </label>
+                        <textarea disabled id="position" name="position" class="form-control mb-4"><%= patientDetails.position %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="dream" class="form-label">Dream :</label>
+                        <textarea disabled id="dream" name="dream" class="form-control mb-4"><%= patientDetails.dream %></textarea>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="periodicity" class="form-label">Periodicity :</label>
+                        <textarea disabled id="periodicity" name="periodicity class="form-control mb-4"><%= patientDetails.periodicity %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="sides" class="form-label">Sides of body :</label>
+                        <textarea disabled id="sides" name="sides" class="form-control mb-4"><%= patientDetails.sides %></textarea>        
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="mental" class="form-label">Mental generals :</label>
+                        <textarea disabled id="mental" name="mental" class="form-control mb-4"><%= patientDetails.mental %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="modality" class="form-label">General modality :</label>
+                        <textarea disabled id="modality" name="modality" class="form-control mb-4"><%= patientDetails.modality %></textarea>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="other" class="form-label">Other General :</label>
+                        <textarea disabled id="other" name="other_general" class="form-control mb-4"><%= patientDetails.other %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="constitution" class="form-label">Constitution :</label>
+                        <textarea disabled id="constitution" name="constitution" class="form-control mb-4"><%= patientDetails.constitution %></textarea>
+                    </div>
+                </div>
+
+                <!-- <hr> -->
+                <h2 class="mt-3 mb-3">Discharge</h2>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="stool" class="form-label">Stool :</label>
+                        <textarea disabled id="stool" name="stool" class="form-control mb-4"><%= patientDetails.stool %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="urine" class="form-label">Urine :</label>
+                        <textarea disabled id="urine" name="urine" class="form-control mb-4"><%= patientDetails.urine %></textarea>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="sweat" class="form-label">Sweat :</label>
+                        <textarea disabled id="sweat" name="sweat" class="form-control mb-4"><%= patientDetails.sweat %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="mensturation" class="form-label">Mensturation :</label>
+                        <textarea disabled id="mensturation" name="mensturation" class="form-control mb-4"><%= patientDetails.mensturation %></textarea>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <label for="leucorrhoea" class="form-label">Lucorrhoea :</label>
+                        <textarea disabled id="leucorrhoea" name="leucorrhoea" class="form-control mb-4"><%= patientDetails.leucorrhoea %></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="emission" class="form-label">Seminal emission :</label>
+                        <textarea disabled id="emission" name="semimal_emission" class="form-control mb-4"><%= patientDetails.emission %></textarea>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-12">
+                        <label for="alteration" class="form-label">Alteration :</label>
+                        <textarea disabled id="alteration" name="alteration" class="form-control mb-4"><%= patientDetails.alteration %></textarea>
+                    </div>
+                </div>
+                
+
+            
+                <h2 class="py-4">4. SELECTION OF REMEDY</h2>
+                <p><label for="characteristics" class="form-label mt-3">i. Finding of Characteristics :</label></p>
+                <textarea disabled class="form-control" name=" find_characteristics" id="characteristics" ><%= patientDetails.characteristics %></textarea>
+
+                <p><label for="evaluation_of_symptoms" class="form-label mt-3">ii. Evaluation of symptoms :</label></p>
+                <textarea disabled class="form-control" name=" evaluation_of_symptoms" id="evaluation_of_symptoms" ><%= patientDetails.evaluation_of_symptoms %></textarea>
+
+                <p><label for="analysis_of_case" class="form-label mt-3">iii. Analysis of case :</label><%= patientDetails.analysis_of_case %></p>
+                <textarea disabled class="form-control" name="analysis_of_case" id="analysis_of_case" ></textarea>
+
+                <p><label for="repertorisation" class="form-label mt-3">iv. Repertorisation (competing remedies) :</label></p>
+                <textarea disabled class="form-control" name=" repertorisation" id="repertorisation" ><%= patientDetails.repertorisation %></textarea>
+
+                <p><label for="basis_of_selction" class="form-label mt-3">v. Basis of selection :</label></p>
+                <textarea disabled class="form-control mb-4" name=" basis_of_selction" id="basis_of_selction" ><%= patientDetails.basis_of_selction %></textarea>   
+            
+
+            
+                <div class="heading mb-4">
+                    <h2>PRESCRIPTION & FOLLOW UP</h2>
+                    <div class="buttons">
+                        <button class="add btn btn-outline-success px-4 py-3"><i class="fa-solid fa-plus"></i></button>
+                        <button class="remove btn btn-outline-danger px-4 py-3"><i class="fa-solid fa-minus"></i></button>
+                    </div>
+                </div>
+
+                <div class="container-fluid p-0 rounded-pill">
+                    <table class="table table-dark table-striped table-bordered text-white rounded">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">REMARKS</th>
+                            <th scope="col">RX</th>
+                          </tr>
+                        </thead>
+                        <tbody id="nextRow">
+                          <tr>
+                            <th scope="row">1</th>
+                            <td class="text-uppercase"><input class="w-100" type="date" name="" id=""></td>
+                            <td><textarea class="w-100"></textarea>
+                            <td><textarea class="w-100"></textarea>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
+                    <button type="submit" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
+                    <button type="submit" class="btn btn-warning rounded px-4 text-white">Submit</button>
+                </div>  
+            </div>
+        </form>
+    </div>
 
 <%- include("partials/footer") %>

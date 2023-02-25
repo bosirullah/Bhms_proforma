@@ -1,13 +1,23 @@
 <%- include("partials/header") %>
     <div class="page">
         <form action="/form" method="post">
-            <%- include("pages/page1") %>
-            <%- include("pages/page2") %>
-            <%- include("pages/page3") %>
-            <%- include("pages/page4") %>
-            <%- include("pages/page5") %>
+            <fieldset class="form_box">
+                <%- include("pages/page1") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page2") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page3") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page4") %>
+            </fieldset>
+            <fieldset class="form_box">
+                <%- include("pages/page5") %>
+            </fieldset>
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" class="btn btn-primary rounded px-4 text-white">Preview</button>
+                <button type="submit" class="btn btn-warning ounded px-4 text-white">Submit</button>
             </div> 
         </form>
         

@@ -95,3 +95,18 @@ addBtn.on("click", () => {
 removeBtn.on("click",()=>{
     $("#nextRow tr:last-child").remove();
 })
+
+
+
+
+// preloader
+
+const loader = $("#preloader");
+$(window).on("load", () => {
+  loader.css("display", "none");
+});
+
+// const loader = document.getElementById("preloader");
+// window.addEventListener("load", () => {
+//   loader.style.display = "none"
+// })

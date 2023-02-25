@@ -1,39 +1,28 @@
 <%- include("partials/header") %>
-    <div class="page">
-        <form action="/home" method="post">
-            <fieldset class="form_box">
-                <%- include("pages/page1") %>
-            </fieldset>
-            <fieldset class="form_box">
-                <%- include("pages/page2") %>
-            </fieldset>
-            <fieldset class="form_box">
-                <%- include("pages/page3") %>
-            </fieldset>
-            <fieldset class="form_box">
-                <%- include("pages/page4") %>
-            </fieldset>
-            <fieldset class="form_box">
-                <%- include("pages/page5") %>
-            </fieldset>
-            <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" class="btn btn-warning ounded px-4 text-white">Submit</button>
-            </div> 
+    <div class="h-100 my-5 pt-5">
+        <form action="/home" method="post" class="d-flex align-items-center justify-content-center h-50 gap-3 flex-wrap">
+            <div>
+                <label for="">Enter reference number: </label><br>
+                <input type="number" name="ref_no" placeholder="Enter reference number" autocomplete="off">
+                <button class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+            </div>
+            <div>
+                <label for="">Enter name: </label><br>
+                <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
+                <button class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+            </div>
+            <div>
+                <label for="">Enter phone number</label><br>
+                <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
+                <button class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+            </div>  
         </form>
         
-        <br>
-        <label for="">Enter name: </label><br>
-        <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
-        <button class="btn btn-outline-success">Search</button>
-
-        <br>
-        <label for="">Enter phone number</label><br>
-        <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
-        <button class="btn btn-outline-success">Search</button>
     </form>
-
-    <form action="/form">
-        <button class="btn btn-primary w-20 mt-5">New application</button>
+    <form action="" class="m-x-auto">
+        <button class="btn btn-primary w-40 d-block mt-5 mx-auto">New application</button>
     </form>
+    </div>
+
 
 <%- include("partials/footer") %>
