@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/:customRouteName",(req,res)=>{
     const customRouteName = _.capitalize(req.params.customRouteName);
-    // console.log(req.bod)
+    // console.log(`getrequest: ${req.body}`)
     res.render(customRouteName,{patientDetails: req.body,patient_id:req.body.id});
 });
 
@@ -31,105 +31,48 @@ app.get("/form/:id",(req,res)=>{
     })
 })
 
-// app.get("/preview",(req,res)=>{
-//     // Patient.find((err,patient)=>{
-//     //     if(err) console.log(err);
-//     //     else{
-//     //         res.send(patient);
-//     //     }
-//     // })
-//     res.render("home");
-//     // res.send(req.body);
-// })
-
-// app.get("/preview/:id",(req,res)=>{
-//     res.render("preview",{patientDetails: req.body,patient_id: req.params.id});
-// })
-
-
-// app.get("/*", (req, res) => {
-//     res.render("errorPage");
-// })
-
-// 
-
-app.post("/home", (req, res) => {
-  // const ref_no = req.body.ref_no;
-  // const fullName = req.body.fullName;
-  // const phoneNo = req.body.phoneNo;
-
-  // Patient.find((err, patients) => {
-  //   if (err) console.log(err);
-  //   else {
-  //     // res.send(patients[1].pages.ref_no);
-  //     patients.forEach((patient) => {
-  //       // console.log(patient.pages.ref_no);
-  //       if (
-  //         ref_no === patient.pages.ref_no ||
-  //         fullName === patient.pages.fullName ||
-  //         phoneNo === patient.pages.contact
-  //       ) {
-  //         res.render("preview", { patientDetails: patient.pages });
-  //       }
-  //     });
-  //   }
-  // });
-});
-
 
 let patient;
 app.post("/preview",(req,res)=>{
     patient = new Patient({ pages: req.body })
+    res.render("preview",{patientDetails: req.body,patient_id: patient._id});
+})
 
+let patientData;
+
+app.post("/preview/:id", (req, res)=>{
+    const patientId = req.params.id;
+    console.log(patientId);
+    // console.log(req.body);
+    patientData = req.body;
+    res.render("preview",{patientDetails: req.body, patient_id:patientId});
+})
+app.post("/preview2",(req,res)=>{
     const ref_no = req.body.ref_no;
     const fullName = req.body.fullName;
     const phoneNo = req.body.phoneNo;
-    // console.log(req.body.id);
-    
-    // res.render("preview",{patientDetails: req.body,patient_id: req.body.id});
 
-
-    Patient.find((err,patients)=>{
-        if(err) console.log(err)
+    Patient.findOne({'pages.ref_no': ref_no}, (err, data)=>{
+        if(err){
+            console.log(err);
+        }
         else{
-            // res.send(patients[1].pages.ref_no);
-            // if(patients){
-                patients.forEach((patient)=>{
-                    // console.log(patient.pages.ref_no);
-                    if(ref_no === patient.pages.ref_no || fullName === patient.pages.fullName || phoneNo === patient.pages.contact){
-                        res.render("preview",{patientDetails: patient.pages,patient_id: patient.id});
-                    }
-                    
-                })
-            // }
-        }
-    })
-
-})
-
-
-app.post("/preview/:id",(req,res)=>{
-    // console.log(req.body);
-    Patient.findByIdAndUpdate(req.params.id,req.body,(err,patient)=>{
-        if(err) console.log(err);
-        else {
-            console.log("Successfully updated");
-            res.render("preview",{patientDetails: req.body,patient_id:req.params.id});
+            if(data === null){
+                console.log("Not Found");
+            }
+            else{
+                res.render("preview",{patientDetails: data.pages, patient_id: data._id});
+            }
         }
     })
     
-
-    // res.render("preview",{patientDetails: req.body,patient_id:req.params.id});
-    
 })
-
-
 
 app.post("/form",(req,res)=>{
-    // patient = new Patient({ pages: req.body })
+    // patient = new Patient({ pages: req.body });
+    console.log(req.body);
     res.render("preview",{patientDetails: req.body,patient_id: req.body.id}); 
 })
-
 
 app.post("/form/:id",(req,res)=>{
     // console.log(req.body);
@@ -142,34 +85,28 @@ app.post("/form/:id",(req,res)=>{
     })
 })
 
-
-
-
 app.post("/home/:id",(req,res)=>{
-    // if(Patient.findById(patient))
-    // if(patient !== undefined){
-    //     Patient.findByIdAndUpdate(req.params.id,req.body,(err,patient)=>{
-    //         if(err) console.log(err);
-    //         else {
-    //             console.log("Successfully updated");
-    //             res.render("preview",{patientDetails: req.body,patient_id:req.params.id});
-    //         }
-    //     })
-    // }
-    // else{
-    //     Patient.insertMany(patient,(err)=>{
-    //         if(err) console.log(err);
-    //         else{
-    //             console.log("Successfull");
-    //         }
-    //     })
-    // }
-    res.render("home",{patientDetails : req.body,patient_id: req.params.id});
-    // patient.save().then(()=>console.log("successfull"));
+    // patient = new Patient({ pages: req.body })
+    // console.log(req.params.id);
+    // console.log(patientData);   
+    Patient.countDocuments({_id: req.params.id},(err,count)=>{
+        if(count > 0){
+            Patient.findByIdAndUpdate(req.params.id, {'pages': patientData}, (err,patient)=>{
+                if(err) console.log(err);
+                else {
+                    console.log("Successfully updated");
+                    res.render("home",{patientDetails: patientData, patient_id:req.params.id});
+                }
+            })
+        }
+        else{
+            console.log("else e jacche")
+            patient.save().then(()=>console.log("successfull")).catch((err)=>{
+                console.log(err);
+            });
+        }
+    })
 })
-
-
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
