@@ -1,17 +1,17 @@
 <%- include("partials/header") %>
     <div class="page">
-        
+        <!-- <h1><%= patient_id %></h1> -->
         <div class="h-100 my-5 pt-5">
-            <form action="/preview" method="post" class="d-flex align-items-center justify-content-center h-50 gap-3 flex-wrap">
+            <form action="/preview2" method="post" class="d-flex align-items-center justify-content-center h-50 gap-3 flex-wrap">
                 <div>
                     <label for="">Enter reference number: </label><br>
                     <input type="number" name="ref_no" placeholder="Enter reference number" autocomplete="off">
-                    <button class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
                 </div>
                 <div>
                     <label for="">Enter name: </label><br>
                     <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
-                    <button class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
                 </div>
                 <div>
                     <label for="">Enter phone number</label><br>

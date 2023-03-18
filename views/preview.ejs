@@ -1,7 +1,6 @@
 <%- include("partials/header") %>
     <div class="page">
-        <form action="/home" method="post">
-            <h1><%= patient_id %></h1>
+        <form action="" method="post">
             <fieldset disabled class="form_box">
                 <%- include("pages/page1") %>
             </fieldset>
@@ -19,8 +18,7 @@
             </fieldset>
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
                 <button type="submit" formaction="/home/<%= patient_id %>" class="btn btn-warning rounded px-4 text-white">Submit</button>
-                <button type="submit" formaction="/form/<%= patient_id %>" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
-                
+                <button type="submit" formaction="/form/<%= patient_id %>" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>             
             </div> 
         </form>
     </div>
