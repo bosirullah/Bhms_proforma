@@ -75,11 +75,11 @@ app.post("/preview2", (req, res) => {
   });
 });
 
-app.post("/form", (req, res) => {
-  // patient = new Patient({ pages: req.body });
-  console.log(req.body);
-  res.render("preview", { patientDetails: req.body, patient_id: req.body.id });
-});
+// app.post("/form", (req, res) => {
+//   // patient = new Patient({ pages: req.body });
+//   console.log(req.body);
+//   res.render("preview", { patientDetails: req.body, patient_id: req.body.id });
+// });
 
 app.post("/form/:id", (req, res) => {
   // console.log(req.body);
@@ -123,6 +123,10 @@ app.post("/home/:id", (req, res) => {
         .catch((err) => {
           console.log(err);
         });
+      res.render("home", {
+        patientDetails: patientData,
+        patient_id: req.params.id,
+      });
     }
   });
 });
