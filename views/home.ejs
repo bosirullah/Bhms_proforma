@@ -1,6 +1,5 @@
 <%- include("partials/header") %>
     <div class="page">
-        <!-- <h1><%= patient_id %></h1> -->
         <div class="h-100 my-5 pt-5">
             <form action="/preview2" method="post" class="d-flex align-items-center justify-content-center h-50 gap-3 flex-wrap">
                 <div>
@@ -18,12 +17,15 @@
                     <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
                     <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
                 </div>  
+                <a class="btn btn-primary mt-5 mx-auto" href="/form" role="button">New application</a>
             </form>
             
-        </form>
-        <!-- <form action="" class="m-x-auto">
-            <button class="btn btn-primary w-40 d-block mt-5 mx-auto">New application</button>
-        </form> -->
+
+            <form action="/logout" class="m-x-auto">
+                <button class="btn btn-danger btn-lg">Log Out</button>
+            </form>
+        </div>
+        
     </div>
 
 

@@ -210,6 +210,17 @@ textarea:disabled, input:disabled{
   background-color: red;
 }
 
+.centered {
+  padding-top: 300px;
+  text-align: center;
+}
+
+.error-input{
+  height: 100px;
+  width: 600px;
+  background-color: #fff;
+  margin: auto;
+}
 
 /* Login mobile responsive  */
 @media (max-width: 420px) {

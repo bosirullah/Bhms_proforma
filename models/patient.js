@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
-const connection = require("../utils/database");
+// const {connection} = require("../utils/database");
 
 const patientSchema = new mongoose.Schema({
-    pages: Object
+    pages: Object,
+    doctor:{
+        type: String,
+        require: true,
+        ref: "User" //Creating a relationship with user model
+    }
 });
 
-const Patient = connection.model("Patient",patientSchema);
+const Patient = new mongoose.model("Patient",patientSchema);
 
 module.exports = Patient;
 
