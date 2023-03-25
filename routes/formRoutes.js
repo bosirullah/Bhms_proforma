@@ -7,6 +7,8 @@ const session = require("express-session");
 
 const router = express.Router();
 const Patient = require("../models/patient");
+const {parse} = require("json2csv");
+const fs = require("fs");
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -31,29 +33,37 @@ router.get("/errorPage",(req,res)=>{
     res.render("errorPage")
 })
 
-// router.get("/form",(req,res)=>{
-//     console.log(`form = ${req.isAuthenticated()}`)
-//     if(req.isAuthenticated()){
-//         res.render("form",{patientDetails: req.body,patient_id:req.body.id});
-//     }
-//     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
-// })
+router.get("/form",(req,res)=>{
+    console.log(`form = ${req.isAuthenticated()}`)
+    if(req.isAuthenticated()){
+        res.render("form",{patientDetails: req.body,patient_id:req.body.id});
+    }
+    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
+})
 
-// router.get("/preview",(req,res)=>{
-//     console.log(`preview = ${req.isAuthenticated()}`)
-//     if(req.isAuthenticated()){
-//         res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
-//     }
-//     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
-// })
+router.get("/preview2",(req,res)=>{
+    console.log(`preview2 = ${req.isAuthenticated()}`)
+    if(req.isAuthenticated()){
+        res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
+    }
+    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
+})
 
-// router.get("/home",(req,res)=>{
-//     console.log(`home = ${req.isAuthenticated()}`)
-//     if(req.isAuthenticated()){
-//         res.render("home",{patientDetails: req.body,patient_id:req.body.id});
-//     }
-//     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
-// })
+router.get("/preview",(req,res)=>{
+    console.log(`preview = ${req.isAuthenticated()}`)
+    if(req.isAuthenticated()){
+        res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
+    }
+    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
+})
+
+router.get("/home",(req,res)=>{
+    console.log(`home = ${req.isAuthenticated()}`)
+    if(req.isAuthenticated()){
+        res.render("home",{patientDetails: req.body,patient_id:req.body.id});
+    }
+    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
+})
 
 // router.use(function(req, res, next) {
 //     res.status(404);
@@ -64,10 +74,11 @@ router.get("/errorPage",(req,res)=>{
 //     }
 // });
 
-router.get("/:customRouteName",(req,res)=>{
-    const customRouteName = _.capitalize(req.params.customRouteName);
-    res.render(customRouteName,{patientDetails: req.body,patient_id:req.body.id});
-})
+// router.get("/:customRouteName",(req,res)=>{
+//     // const customRouteName = _.capitalize(req.params.customRouteName);
+//     // res.render(customRouteName,{patientDetails: req.body,patient_id:req.body.id});
+//     res.render("errorPage");
+// })
 
 router.get("/form/:id",(req,res)=>{
     Patient.findById(req.params.id,(err,patient)=>{
@@ -76,6 +87,10 @@ router.get("/form/:id",(req,res)=>{
             res.render("form",{patientDetails:patient});
         }
     })
+})
+
+router.get("/*",(req,res)=>{
+    res.render("errorPage");
 })
 
 router.post("/preview",(req,res)=>{
@@ -146,5 +161,11 @@ router.post("/home/:id",(req,res)=>{
         }
     })
 })
+
+router.post("/export",(req,res)=>{
+    Post.findOne
+})
+
+
 
 module.exports = router;
