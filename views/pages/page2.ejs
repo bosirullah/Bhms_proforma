@@ -37,7 +37,8 @@
 <div class="row">
     <div class="col-sm-6">
         <label for="hypertension" class="mb-3 mt-3">Hypertension :</label>
-        <textarea name="hypertension" id="hypertension" class="form-control"><%= patientDetails.hypertension %></textarea>
+        <textarea name="hypertension" id="hypertension"
+            class="form-control"><%= patientDetails.hypertension %></textarea>
     </div>
     <div class="col-sm-6">
         <label for="injury" class="mb-3 mt-3">Injury/Accident :</label>
@@ -48,7 +49,7 @@
 <div class="row">
     <div class="col-sm-6">
         <label for="operation" class="mb-3 mt-3">Operation :</label>
-        <textarea name="operation" id="operation" class="form-control" ><%= patientDetails.operation%></textarea>
+        <textarea name="operation" id="operation" class="form-control"><%= patientDetails.operation%></textarea>
     </div>
     <div class="col-sm-6">
         <label for="venereal" class="mb-3 mt-3">Venereal :</label>
@@ -75,7 +76,8 @@
     </div>
     <div class="col-sm-6">
         <label for="other_disease" class="mb-3 mt-3">Any other disease :</label>
-        <textarea name="other_disease" id="other_disease" class="form-control"><%= patientDetails.other_disease %></textarea>
+        <textarea name="other_disease" id="other_disease"
+            class="form-control"><%= patientDetails.other_disease %></textarea>
     </div>
 </div>
 
@@ -85,7 +87,8 @@
 <div class="row">
     <div class="col-sm-6">
         <label for="birth_weight" class="mb-3 mt-3">Birth weight :</label>
-        <textarea name="birth_weight" id="birth_weight" class="form-control"><%= patientDetails.birth_weight %></textarea>
+        <textarea name="birth_weight" id="birth_weight"
+            class="form-control"><%= patientDetails.birth_weight %></textarea>
     </div>
     <div class="col-sm-6">
         <label for="birth_rash" class="mb-3 mt-3">Birth rash :</label>
@@ -97,7 +100,8 @@
 <div class="row">
     <div class="col-sm-6">
         <label for="neck_holding" class="mb-3 mt-3">Neck holding :</label>
-        <textarea name="neck_holding" id="neck_holding" class="form-control"><%= patientDetails.neck_holding %></textarea>
+        <textarea name="neck_holding" id="neck_holding"
+            class="form-control"><%= patientDetails.neck_holding %></textarea>
     </div>
     <div class="col-sm-6">
         <label for="walking" class="mb-3 mt-3">Walking :</label>
@@ -106,7 +110,8 @@
 </div>
 <div class="col">
     <label for="vaccination_bh" class="mb-3 mt-3">Vaccination :</label>
-    <textarea name="vaccination_bh" id="vaccination_bh" class="form-control"><%= patientDetails.vaccination_bh%></textarea>
+    <textarea name="vaccination_bh" id="vaccination_bh"
+        class="form-control"><%= patientDetails.vaccination_bh%></textarea>
 </div>
 
 <div class="row">
@@ -121,12 +126,12 @@
 </div>
 
 
-    <!-- <hr> -->
+<!-- <hr> -->
 
 <div class="container-fluid mt-5">
-    <div class="buttons my-4">
-        <button class="add-row btn btn-outline-success px-4 py-3 text-bold display-6">+</button>
-        <button class="remove-row btn btn-outline-danger px-4 py-3 text-bold display-6">-</button>
+    <div class="buttons my-4" id="rowNext">
+        <button class="add-row btn btn-outline-success px-4 py-3 text-bold display-6" type="button">Add</button>
+        <button class="remove-row btn btn-outline-danger px-4 py-3 text-bold display-6" type="button">-</button>
     </div>
 
     <table class="table table-dark table-striped table-bordered text-white rounded">
@@ -142,6 +147,7 @@
             <tr>
                 <td>
                     <select name="disease_name" id="disease_name" class="select_area" style="padding: 0.8rem;">
+                        <option value="0">-Select-</option>
                         <option value="1">Typhoid</option>
                         <option value="2">Malaria</option>
                         <option value="3">Dengue</option>
@@ -190,7 +196,7 @@
     </table>
 </div>
 
-    <!-- <hr> -->
+<!-- <hr> -->
 
 <h5 class="mt-5">(c) FEMALE DISEASES</h5>
 <div class="row">
@@ -245,7 +251,8 @@
     </div>
     <div class="col-sm-6">
         <label for="paternal_others" class="form-label">Others :</label>
-        <textarea name="paternal_others" id="paternal_others" class="form-control"><%= patientDetails.paternal_others %></textarea>
+        <textarea name="paternal_others" id="paternal_others"
+            class="form-control"><%= patientDetails.paternal_others %></textarea>
     </div>
 </div>
 
@@ -257,27 +264,32 @@
     </div>
     <div class="col">
         <label for="maternal_uncle" class="form-label">Maternal Uncle :</label>
-        <textarea name="maternal_uncle" id="maternal_uncle" class="form-control"><%= patientDetails.maternal_uncle %></textarea>
+        <textarea name="maternal_uncle" id="maternal_uncle"
+            class="form-control"><%= patientDetails.maternal_uncle %></textarea>
     </div>
 </div>
 <div class="row">
     <div class="col">
         <label for="maternal_grandfather" class="form-label">Grandfather :</label>
-        <textarea name="maternal_grandfather" id="maternal_grandfather" class="form-control"><%= patientDetails.maternal_grandfather %></textarea>
+        <textarea name="maternal_grandfather" id="maternal_grandfather"
+            class="form-control"><%= patientDetails.maternal_grandfather %></textarea>
     </div>
     <div class="col">
         <label for="maternal_aunt" class="form-label">Maternal Aunt :</label>
-        <textarea name="maternal_aunt" id="maternal_aunt" class="form-control"><%= patientDetails.maternal_aunt %></textarea>
+        <textarea name="maternal_aunt" id="maternal_aunt"
+            class="form-control"><%= patientDetails.maternal_aunt %></textarea>
     </div>
 </div>
 <div class="row">
     <div class="col">
         <label for="maternal_grandmother" class="form-label">Grandmother :</label>
-        <textarea name="maternal_grandmother" id="maternal_grandmother" class="form-control"><%= patientDetails.maternal_grandmother %></textarea>
+        <textarea name="maternal_grandmother" id="maternal_grandmother"
+            class="form-control"><%= patientDetails.maternal_grandmother %></textarea>
     </div>
     <div class="col">
         <label for="maternal_others" class="form-label">Others :</label>
-        <textarea name="maternal_others" id="maternal_others" class="form-control"><%= patientDetails.maternal_others %></textarea>
+        <textarea name="maternal_others" id="maternal_others"
+            class="form-control"><%= patientDetails.maternal_others %></textarea>
     </div>
 </div>
 
@@ -312,13 +324,15 @@
     </div>
     <div class="col-sm-6">
         <label for="history_occupation" class="form-label">Occupation :</label>
-        <textarea name="history_occupation" id="history_occupation" class="form-control"><%= patientDetails.history_occupation %></textarea>
+        <textarea name="history_occupation" id="history_occupation"
+            class="form-control"><%= patientDetails.history_occupation %></textarea>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-6">
         <label for="accommodation" class="form-label">Accommodation :</label>
-        <textarea name="accommodation" id="accommodation" class="form-control"><%= patientDetails.accommodation %></textarea>
+        <textarea name="accommodation" id="accommodation"
+            class="form-control"><%= patientDetails.accommodation %></textarea>
     </div>
     <div class="col-sm-6">
         <label for="diet" class="form-label">Diet :</label>
@@ -341,5 +355,3 @@
         <textarea name="sex_h" id="sex_h" class="form-control"><%= patientDetails.sex_h %></textarea>
     </div>
 </div>
-
-

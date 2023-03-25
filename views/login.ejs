@@ -1,10 +1,11 @@
 <%- include("partials/header"); %>
 
-    <div class="error-input">
-        <% for(let i = 0;i<errors.length;i++) {%>
-            <h3> <%= errors[i] %> !</h3>
-        <% } %>
-
+    <div class="alert">
+        <% for(let i=0;i<errors.length;i++) {%>
+            <p class="text-center mt-3 error_message">
+                <%= errors[i] %> !
+            </p>
+            <% } %>
     </div>
 
     <div class="login_form">
@@ -12,14 +13,15 @@
             <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" alt="" width="72" height="72">
             <h2 class="text-center text-white mb-5">Login Here!</h2>
 
-            <input type="text" id="inputEmail" name="username" class="form-control my-4" autocomplete="off" placeholder="Username" required
+            <input type="text" id="inputEmail" name="username" class="form-control my-4" placeholder="Username" required
                 autofocus>
 
-            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+                required>
             <button class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto" type="submit">Log in</button>
         </form>
 
-        
+
     </div>
 
-<%- include("partials/footer"); %>
+    <%- include("partials/footer"); %>
