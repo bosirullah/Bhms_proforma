@@ -1,9 +1,8 @@
 <%- include("partials/header") %>
-    <form action="/logout" class="m-x-auto">
+    <form action="/logout" class="m-x-auto mt-4 d-flex justify-content-end gap-3">
+        <a class="btn btn-success btn-lg" href="/home" role="button">Home</a>
         <button class="btn btn-danger btn-lg">Log Out</button>
     </form>
-    <a class="btn btn-success mt-5 mx-auto" href="/home" role="button">Home</a>
-
     <div class="page">
 
         <form action="" method="post">
@@ -23,9 +22,11 @@
                 <%- include("pages/page5") %>
             </fieldset>
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" formaction="/home/<%= patient_id %>" class="btn btn-warning rounded px-4 text-white">Submit</button>
-                <button type="submit" formaction="/form/<%= patient_id %>" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>             
-            </div> 
+                <button type="submit" formaction="/home/<%= patient_id %>"
+                    class="btn btn-warning rounded px-4 text-white">Submit</button>
+                <button type="submit" formaction="/form/<%= patient_id %>"
+                    class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
+            </div>
         </form>
     </div>
-<%- include("partials/footer") %>
+    <%- include("partials/footer") %>

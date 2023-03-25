@@ -1,32 +1,32 @@
 <%- include("partials/header") %>
     <div class="page">
+        <form action="/logout" class="m-l-auto d-flex justify-content-end">
+            <button class="btn btn-danger btn-md btn-lg">Log Out</button>
+        </form>
         <div class="h-100 my-5 pt-5">
-            <form action="/preview2" method="post" class="d-flex align-items-center justify-content-center h-50 gap-3 flex-wrap">
+            <form action="/preview2" method="post"
+                class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
                 <div>
                     <label for="">Enter reference number: </label><br>
                     <input type="number" name="ref_no" placeholder="Enter reference number" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
                 </div>
                 <div>
                     <label for="">Enter name: </label><br>
                     <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
+                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
                 </div>
                 <div>
                     <label for="">Enter phone number</label><br>
                     <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2">Search</button>
-                </div>  
-                <a class="btn btn-primary mt-5 mx-auto" href="/form" role="button">New application</a>
+                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
+                </div>
             </form>
-            
+            <a class="btn btn-primary mx-auto new_application_btn" href="/form" role="button">New application</a>
 
-            <form action="/logout" class="m-x-auto">
-                <button class="btn btn-danger btn-lg">Log Out</button>
-            </form>
         </div>
-        
+
     </div>
 
 
-<%- include("partials/footer") %>
+    <%- include("partials/footer") %>

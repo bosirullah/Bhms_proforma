@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -123,10 +124,8 @@ input {
 
 .main_heading {
   text-align: center;
-  background-color: #14b8a6;
-  padding: 12px 0;
-  font-size: 2rem;
-  border-radius: 0 2.5rem 0 2.5rem;
+  font-size: 3rem;
+  font-family: "Delicious Handrawn", cursive;
 }
 
 .select_area {
@@ -159,7 +158,6 @@ body {
   padding: 2rem;
   margin-top: 1rem;
 }
-
 
 /* login style */
 .login_form {
@@ -201,12 +199,13 @@ body {
   border-top-right-radius: 0;
 }
 
-textarea:disabled, input:disabled{
+textarea:disabled,
+input:disabled {
   color: grey;
   cursor: not-allowed;
 }
 
-.form-control:disabled{
+.form-control:disabled {
   background-color: red;
 }
 
@@ -215,11 +214,22 @@ textarea:disabled, input:disabled{
   text-align: center;
 }
 
-.error-input{
-  height: 100px;
-  width: 600px;
-  background-color: #fff;
-  margin: auto;
+.error_message {
+  color: rgb(96, 21, 21);
+  background-color: rgb(179, 117, 117);
+  /* width: 50%; */
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+}
+
+.new_application_btn {
+  display: block;
+  width: 200px;
+  padding: 0.8rem;
+  margin-top: 5rem;
 }
 
 /* Login mobile responsive  */
@@ -233,89 +243,89 @@ textarea:disabled, input:disabled{
   .form-signin {
     width: 16rem;
   }
-  
+
   h1 {
     font-weight: 700;
     color: var(--bg-light);
     position: relative;
     font-family: "Raleway", sans-serif;
   }
-  
+
   h2 {
     font-weight: 500;
     font-family: "Ubuntu", sans-serif;
     color: var(--heading-two);
   }
-  
+
   body {
     background-color: rgb(246, 246, 246);
     font-family: "Poppins", sans-serif;
   }
-  
+
   h4 {
     margin: 3rem 0 1rem;
     font-weight: 400;
     color: #818cf8;
   }
-  
+
   h5 {
     margin: 1.5rem 0 1rem;
     font-size: 24px;
     font-weight: 400;
     color: #f97316;
   }
-  
+
   .page {
     padding: 1.5rem 2rem;
     border-radius: 20px;
     height: 100%;
   }
-  
+
   .heading {
     display: flex;
     justify-content: space-between;
   }
-  
+
   label {
     font-size: 17px;
     font-weight: 300;
     margin: 1rem 0;
     color: var(--white);
   }
-  
+
   input[type="date"] {
     width: auto;
     height: auto;
     border: none;
     background-color: var(--bg-light);
   }
-  
+
   .text {
     width: 100%;
     border: none;
     background-color: lightgray;
   }
-  
+
   td {
     padding: 0;
     text-align: center;
   }
-  
+
   th {
     text-align: center;
   }
-  
+
   #date {
     width: 12%;
   }
-  
+
   #disease_name {
     width: 100% !important;
     height: 100% !important;
     padding: 4px 10px 7px;
     border: none;
   }
-  
+
   #page2_table {
     width: 100%;
     border-collapse: collapse;
@@ -324,14 +334,14 @@ textarea:disabled, input:disabled{
   #page2_table td {
     height: 100%;
   }
-  
+
   hr {
     height: 3px;
     margin: 3rem auto;
     background-color: #fde68a;
     border-radius: 30px;
   }
-  
+
   textarea,
   input {
     border: 0 !important;
@@ -344,24 +354,25 @@ textarea:disabled, input:disabled{
     padding: 0.8rem 1rem !important;
     border-radius: 0.5rem !important;
   }
-  
+
   .main_heading {
     text-align: center;
     background-color: #14b8a6;
     padding: 12px 0;
     font-size: 2rem;
     border-radius: 0 2.5rem 0 2.5rem;
+    font-family: "Delicious", cursive;
     /* position: sticky; */
     /* top: 1rem; */
   }
-  
+
   .select_area {
     border: none;
     outline: none;
     background: #ccc;
     border-radius: 10px;
   }
-  
+
   body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.76), rgb(0, 0, 0)),
       url(../images/wallpaper.jpg);
@@ -384,8 +395,6 @@ textarea:disabled, input:disabled{
 .form_box:first-child {
   padding-top: 0;
 }
-
-
 
 /* Preloader */
 
