@@ -232,6 +232,11 @@ input:disabled {
   margin-top: 5rem;
 }
 
+.alert{
+  width: 40%;
+  /* margin-top: 100px; */
+}
+
 /* Login mobile responsive  */
 @media (max-width: 420px) {
   .form-signin {

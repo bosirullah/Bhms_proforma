@@ -1,4 +1,10 @@
 <%- include("partials/header") %>
+    <% if (errorMessage.length !== 0) { %>
+        <div class="alert alert-danger text-center p-2">
+            <strong style="font-size: 20px"><i class="fa-solid fa-circle-exclamation mx-3"></i><%= errorMessage %> </strong>
+        </div>
+    <% } %>
+
     <div class="page">
         <form action="/logout" class="m-l-auto d-flex justify-content-end">
             <button class="btn btn-danger btn-md btn-lg">Log Out</button>

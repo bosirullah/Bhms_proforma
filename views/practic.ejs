@@ -1,0 +1,14 @@
+<% const fruits = ['Apple', 'Banana', 'Orange']; %>
+
+<select onchange="updateSelected(this)">
+    <% fruits.forEach(function(fruit) { %>
+        <option value="<%= fruit %>"><%= fruit %></option>
+    <% }); %>
+</select>
+
+<script>
+    function updateSelected(select) {
+        var selectedFruit = select.value;
+        select.value = selectedFruit;
+    }
+</script>

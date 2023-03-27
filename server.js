@@ -19,6 +19,10 @@ app.use(userRoutes);
 app.use(routes);
 
 
+// app.get("/practic",(req,res)=>{
+//   res.render("practic");
+// })
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

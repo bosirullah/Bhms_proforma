@@ -1,27 +1,37 @@
 <div class="heading mb-4">
 <h2>PRESCRIPTION & FOLLOW UP</h2>
 <div class="buttons">
-    <button class="add btn btn-outline-success px-4 py-3"><i class="fa-solid fa-plus"></i></button>
-    <button class="remove btn btn-outline-danger px-4 py-3"><i class="fa-solid fa-minus"></i></button>
+    <button class="add btn btn-outline-success px-4 py-3" type="button">+</i></button>
+    <button class="remove btn btn-outline-danger px-4 py-3" type="button">-</i></button>
 </div>
 </div>
 <div class="container-fluid p-0 rounded-pill">
     <table class="table table-dark table-striped table-bordered text-white rounded">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">DATE</th>
             <th scope="col">REMARKS</th>
             <th scope="col">RX</th>
           </tr>
         </thead>
-        <tbody id="nextRow">
-          <tr>
-            <th scope="row">1</th>
-            <td class="text-uppercase"><input class="w-100" type="date" name="" id=""></td>
-            <td><textarea class="w-100"></textarea>
-            <td><textarea class="w-100"></textarea>
-          </tr>
+
+        <tbody id="lastRowNext">
+          
+          <% if(patientDetails.prescriptionDate !== undefined && typeof(patientDetails.prescriptionDate) !== "string"){ %>
+            <% for(let i = 0;i<patientDetails.prescriptionDate.length;i++){ %>
+                <tr>
+                  <td class="text-uppercase"><input class="w-100" type="date" name="prescriptionDate" value="<%= patientDetails.prescriptionDate[i] %>"></td>
+                  <td><textarea class="w-100" name="prescriptionRemarks"><%= patientDetails.prescriptionRemarks[i] %></textarea>
+                  <td><textarea class="w-100" name="prescriptionRx"><%= patientDetails.prescriptionRx[i] %></textarea>
+                </tr>
+              <% } %>
+          <% } else { %>
+              <tr>
+                <td class="text-uppercase"><input class="w-100" type="date" name="prescriptionDate" value="<%= patientDetails.prescriptionDate %>"></td>
+                <td><textarea class="w-100" name="prescriptionRemarks"><%= patientDetails.prescriptionRemarks %></textarea>
+                <td><textarea class="w-100" name="prescriptionRx"><%= patientDetails.prescriptionRx %></textarea>
+              </tr>
+          <% } %>
         </tbody>
     </table>
 </div>

@@ -6,7 +6,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const findOrCreate = require("mongoose-findorcreate");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const _ = require("lodash");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
@@ -21,12 +21,7 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.use(cookieParser('keyboard cat'));
-// router.use(session({
-//     secret: 'keyboard cat',
-//     resave: true,
-//     saveUninitialized: true,
-//     cookie: { maxAge: 60000 }
-// }))
+
 router.use(flash());
 
 router.use(session({
@@ -40,11 +35,23 @@ router.use(passport.session());
 
 
 userSchema.plugin(passportLocalMongoose);
-// userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User",userSchema);
 
-passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy({ usernameField: 'email' },(email, password, done) => {
+    User.findOne({ email: email }, (err, user) => {
+        if (err) { return done(err); }
+        if (!user) {
+            return done(null, false, { message: 'Invalid email or password' });
+        }
+        if (!user.validPassword(password)) {
+            return done(null, false, { message: 'Invalid email or password' });
+        }
+        return done(null, user);
+    });
+    }
+));
 
 passport.use(User.createStrategy());
 
@@ -62,13 +69,18 @@ router.get("/",(req,res)=>{
     res.render("main");
 })
 
+
 router.get("/register",(req,res)=>{
-    res.render("register");
+    res.render("register",{
+        errorMessage: req.flash("error")
+    });
 })
 
 router.get("/login",(req,res)=>{
-    const errors = req.flash().error || [];
-    res.render("login",{errors: errors});
+    res.render("login",{
+        successMessage: req.flash('success'),
+        errorMessage: req.flash('error')
+    })
 })
 
 router.get("/logout", function(req, res){
@@ -84,12 +96,11 @@ router.post("/register", function(req, res){
     User.register({username: req.body.username}, req.body.password, function(err, user){
         if (err) {
             console.log(err);
+            req.flash('error', 'Registration failed. Please try again.');
             res.redirect("/register");
         } 
         else {
-            // passport.authenticate("local")(req, res, function(){
-            //     res.redirect("/login");
-            // });
+            req.flash('success', 'Successfully registered!');
             res.redirect("/login");
         }
     });
@@ -106,15 +117,16 @@ router.post("/login", function(req, res){
         if (err) console.log(err); 
         else {
             passport.authenticate("local",{
-                failureFlash: true,
-                failureRedirect: "/login",
+                successRedirect: '/home',
+                failureRedirect: '/login',
+                failureFlash: true
             })(req, res, function(){
-                // console.log(req.user);
+                req.flash('error');
                 const authenticatedUser = {
                     email: user.email
                 };
                 req.user = authenticatedUser;
-                res.redirect("/home");
+                // res.redirect("/home");
             });
         }
     });
@@ -122,3 +134,11 @@ router.post("/login", function(req, res){
 });
 
 module.exports = router;
+
+{/* <div class="alert">
+        <% for(let i=0;i<errors.length;i++) {%>
+            <p class="text-center mt-3 error_message">
+                <%= errors[i] %> !
+            </p>
+            <% } %>
+    </div> */}

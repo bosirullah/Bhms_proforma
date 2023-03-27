@@ -3,7 +3,10 @@ const removeBtn = $(".remove");
 const addRow = $(".add-row");
 const removeRow = $(".remove-row");
 const nextRow = $("#nextRow");
-const rowNext = $("#rowNext");
+const rowNext = $("#lastRowNext");
+const select = $("select");
+const option = $("option");
+
 
 function resizingTextarea() {
   $("textarea")
@@ -24,85 +27,84 @@ function resizingTextarea() {
 resizingTextarea();
 
 addRow.on("click", () => {
-  // console.log("button clicked");
   nextRow.append(
     `
       <tr>
         <td>
             <select name="disease_name" id="disease_name" class="select_area" style="padding: 0.8rem;">
-                <option value="0">-Select-</option>
-                <option value="1">Typhoid</option>
-                <option value="2">Malaria</option>
-                <option value="3">Dengue</option>
-                <option value="4">Chikungunya</option>
-                <option value="5">Measles</option>
-                <option value="6">Jaundice</option>
-                <option value="7">Mumps</option>
-                <option value="8">Ch. Pox</option>
-                <option value="9">Diphtheria</option>
-                <option value="10">Diarrhoea</option>
-                <option value="11">Pneumonia</option>
-                <option value="12">Tuberculosis</option>
-                <option value="13">Asthma</option>
-                <option value="14">Rheumatic fever</option>
-                <option value="15">Tonsillitis</option>
-                <option value="16">Tumours</option>
-                <option value="17">Warts</option>
-                <option value="18">Ringworm</option>
-                <option value="19">Other skin disease</option>
-                <option value="20">Otorrhoea</option>
-                <option value="21">Convulsion</option>
-                <option value="22">Rectal disease</option>
-                <option value="23">Hernia</option>
-                <option value="24">Scrotal swelling</option>
-                <option value="25">Scrotal swelling</option>
-                <option value="26">Gall bladder stone</option>
-                <option value="27">Rheumatism</option>
-                <option value="28">Carcinoma</option>
-                <option value="29">Unconscious</option>
-                <option value="30">Burn</option>
-                <option value="31">Other</option>
-                <option value="32">injury/accident</option>
-                <option value="33">Sexual indulgence</option>
-                <option value="35">Venereal diseases</option>
-                <option value="36">Abuse of drugs</option>
-                <option value="37">Radiation</option>
-                <option value="38">Thyroid</option>
-                <option value="39">Animal bite & vaccination</option>
+              <option value="<%= patientDetails.disease_name %>"><%= patientDetails.disease_name %></option>
+              <option value="Typhoid">Typhoid</option>
+              <option value="Malaria">Malaria</option>
+              <option value="Dengue">Dengue</option>
+              <option value="Chikungunya">Chikungunya</option>
+              <option value="Measles">Measles</option>
+              <option value="Jaundice">Jaundice</option>
+              <option value="Mumps">Mumps</option>
+              <option value="Ch. Pox">Ch. Pox</option>
+              <option value="Diphtheria">Diphtheria</option>
+              <option value="Diarrhoea">Diarrhoea</option>
+              <option value="Pneumonia">Pneumonia</option>
+              <option value="Tuberculosis">Tuberculosis</option>
+              <option value="Asthma">Asthma</option>
+              <option value="Rheumatic fever">Rheumatic fever</option>
+              <option value="Tonsillitis">Tonsillitis</option>
+              <option value="Tumours">Tumours</option>
+              <option value="Warts">Warts</option>
+              <option value="Ringworm">Ringworm</option>
+              <option value="Other skin disease">Other skin disease</option>
+              <option value="Otorrhoea">Otorrhoea</option>
+              <option value="Convulsion">Convulsion</option>
+              <option value="Rectal disease">Rectal disease</option>
+              <option value="Hernia">Hernia</option>
+              <option value="Scrotal swelling">Scrotal swelling</option>
+              <option value="Renal disease">Renal disease</option>
+              <option value="Gall bladder stone">Gall bladder stone</option>
+              <option value="Rheumatism">Rheumatism</option>
+              <option value="Carcinoma">Carcinoma</option>
+              <option value="Unconscious">Unconscious</option>
+              <option value="Burn">Burn</option>
+              <option value="Other">Other</option>
+              <option value="injury/accident">injury/accident</option>
+              <option value="Sexual indulgence">Sexual indulgence</option>
+              <option value="Venereal diseases">Venereal diseases</option>
+              <option value="Abuse of drugs">Abuse of drugs</option>
+              <option value="Radiation">Radiation</option>
+              <option value="Thyroid">Thyroid</option>
+              <option value="Animal bite & vaccination">Animal bite & vaccination</option>
             </select>
-        </td>
-        <td><textarea class="w-100"></textarea>
-        <td><textarea class="w-100"></textarea>
-        <td><textarea class="w-100"></textarea>
+          </td>
+        <td><textarea class="w-100" name="timeOf"></textarea>
+        <td><textarea class="w-100" name="treatment"></textarea>
+        <td><textarea class="w-100" name="result"></textarea>
       </tr>
     `
   );
+
+  resizingTextarea();
 });
 
 addBtn.on("click", () => {
-  nextRow.append(
+  rowNext.append(
     `
-            <tr class="row">
-                <td class="col-1">1</td>
-                <td class="col-3 p-0"><input type="date"></td>
-                <td class="col-4 p-0"><textarea name="" class="text" ></textarea></td>
-                <td class="col-4 p-0"><textarea name="" class="text" ></textarea></td>
-            </tr>
-        
-        `
+      <tr>
+        <td class="text-uppercase"><input class="w-100" type="date" name="prescriptionDate"></td>
+        <td><textarea class="w-100" name="prescriptionRemarks"></textarea>
+        <td><textarea class="w-100" name="prescriptionRx"></textarea>
+      </tr>
+    `
   );
 
   resizingTextarea();
 });
 
 removeBtn.on("click", () => {
-  $("#nextRow tr:last-child").remove();
+  $("#lastRowNext tr:last-child").remove();
 });
 
-let num = 2;
+
 
 removeRow.on("click", () => {
-  $(`#nextRow tr:nth-child(${num})`).remove();
+  $("#nextRow tr:last-child").remove();
 });
 
 // preloader
