@@ -7,7 +7,6 @@ const rowNext = $("#lastRowNext");
 const select = $("select");
 const option = $("option");
 
-
 function resizingTextarea() {
   $("textarea")
     .each(function () {
@@ -100,8 +99,6 @@ addBtn.on("click", () => {
 removeBtn.on("click", () => {
   $("#lastRowNext tr:last-child").remove();
 });
-
-
 
 removeRow.on("click", () => {
   $("#nextRow tr:last-child").remove();
