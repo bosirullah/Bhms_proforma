@@ -1,20 +1,25 @@
 <%- include("partials/header"); %>
-    <% if (errorMessage.length !== 0) { %>
+    <% if (errorMessage.length !==0) { %>
         <div id="flash-message" class="alert alert-danger text-center mx-auto p-2">
-            <strong style="font-size: 20px"><i class="fa-solid fa-circle-exclamation mx-3"></i><%= errorMessage %> </strong>
+            <strong style="font-size: 20px"><i class="fa-solid fa-circle-exclamation mx-3"></i>
+                <%= errorMessage %>
+            </strong>
         </div>
-    <% } %>
+        <% } %>
 
-    <div class="login_form">
-        <form action="/register" method="post" class="form-signin border position-relative top-50">
-            <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" width="72" height="72">
-            <h2 class="text-center text-white mb-5">Register Here!</h2>
+            <div class="login_form">
+                <form action="/register" method="post" class="form-signin border position-relative top-50">
+                    <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" width="72" height="72">
+                    <h2 class="text-center text-white mb-5">Register Here!</h2>
 
-            <input type="email" id="inputEmail" name="username" class="form-control my-4" placeholder="Email" required autofocus>
+                    <input type="email" id="inputEmail" name="username" class="form-control my-4" placeholder="Email"
+                        required autofocus>
 
-            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto" type="submit">Register</button>
-        </form>
-    </div>
+                    <input type="password" id="inputPassword" name="password" class="form-control"
+                        placeholder="Password" required>
+                    <button id="register_btn" class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto"
+                        type="submit">Register</button>
+                </form>
+            </div>
 
-    <%- include("partials/footer"); %>
+            <%- include("partials/footer"); %>

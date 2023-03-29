@@ -7,7 +7,6 @@ const rowNext = $("#lastRowNext");
 const select = $("select");
 const option = $("option");
 
-
 function resizingTextarea() {
   $("textarea")
     .each(function () {

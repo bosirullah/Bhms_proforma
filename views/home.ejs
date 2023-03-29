@@ -5,47 +5,60 @@
             <button class="btn btn-danger btn-md btn-lg">Log Out</button>
         </form>
 
-        <% if (errorMessage.length !== 0) { %>
+        <% if (errorMessage.length !==0) { %>
             <div id="flash-message" class="alert alert-danger text-center mx-auto p-2">
-                <strong style="font-size: 20px"><i class="fa-solid fa-circle-exclamation mx-3"></i><%= errorMessage %> </strong>
+                <strong style="font-size: 20px"><i class="fa-solid fa-circle-exclamation mx-3"></i>
+                    <%= errorMessage %>
+                </strong>
             </div>
-        <% } %>
-    
-        <% if (successMessage.length !== 0) { %>
-            <div id="flash-message" class="alert alert-success text-center mx-auto p-2">
-                <strong style="font-size: 20px"><i class="fa-solid fa-circle-check mx-3"></i><%= successMessage %> </strong>
-            </div>
-        <% } %>
+            <% } %>
 
-        
-        <% if (successUpdatedMessage.length !== 0) { %>
-            <div id="flash-message" class="alert alert-success text-center mx-auto p-2">
-                <strong style="font-size: 20px"><i class="fa-solid fa-circle-check mx-3"></i><%= successUpdatedMessage %> </strong>
-            </div>
-        <% } %>
-        
-        <div class="h-100 my-5 pt-5">
-            <form action="/preview2" method="post"
-                class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
-                <div>
-                    <label for="">Enter reference number: </label><br>
-                    <input type="number" name="ref_no" placeholder="Enter reference number" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
-                </div>
-                <div>
-                    <label for="">Enter name: </label><br>
-                    <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
-                </div>
-                <div>
-                    <label for="">Enter phone number</label><br>
-                    <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
-                    <button type="submit" class="btn btn-outline-success mt-3 mt-sm-0 py-2 btn-lg">Search</button>
-                </div>
-            </form>
-            <a class="btn btn-primary mx-auto new_application_btn" href="/form" role="button">New application</a>
+                <% if (successMessage.length !==0) { %>
+                    <div id="flash-message" class="alert alert-success text-center mx-auto p-2">
+                        <strong style="font-size: 20px"><i class="fa-solid fa-circle-check mx-3"></i>
+                            <%= successMessage %>
+                        </strong>
+                    </div>
+                    <% } %>
 
-        </div>
+
+                        <% if (successUpdatedMessage.length !==0) { %>
+                            <div id="flash-message" class="alert alert-success text-center mx-auto p-2">
+                                <strong style="font-size: 20px"><i class="fa-solid fa-circle-check mx-3"></i>
+                                    <%= successUpdatedMessage %>
+                                </strong>
+                            </div>
+                            <% } %>
+
+                                <div class="h-100 my-5 pt-5">
+                                    <form action="/preview2" method="post"
+                                        class="d-flex align-items-center justify-content-center gap-3 flex-wrap flex-column flex-xxl-row">
+                                        <div>
+                                            <label for="">Enter reference number: </label><br>
+                                            <input type="number" name="ref_no" placeholder="Enter reference number"
+                                                autocomplete="off">
+                                            <button type="submit"
+                                                class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                                        </div>
+                                        <div>
+                                            <label for="">Enter name: </label><br>
+                                            <input type="text" name="fullName" placeholder="Enter name"
+                                                autocomplete="off">
+                                            <button type="submit"
+                                                class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                                        </div>
+                                        <div>
+                                            <label for="">Enter phone number</label><br>
+                                            <input type="number" name="phoneNo" placeholder="Enter phone no"
+                                                autocomplete="off">
+                                            <button type="submit"
+                                                class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-primary mx-auto new_application_btn" href="/form"
+                                        role="button">New application</a>
+
+                                </div>
 
     </div>
 
