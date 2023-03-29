@@ -7,9 +7,6 @@ const session = require("express-session");
 
 const router = express.Router();
 const Patient = require("../models/patient");
-const {parse} = require("json2csv");
-const fs = require("fs");
-
 
 router.use(bodyParser.urlencoded({ extended: true }));
 //set cookeParser,session and flash
@@ -20,6 +17,7 @@ router.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
 }))
+
 router.use(flash());
 
 let patient;
@@ -34,7 +32,6 @@ router.get("/errorPage",(req,res)=>{
 })
 
 router.get("/form",(req,res)=>{
-    console.log(`form = ${req.isAuthenticated()}`)
     if(req.isAuthenticated()){
         res.render("form",{patientDetails: req.body,patient_id:req.body.id});
     }
@@ -42,7 +39,6 @@ router.get("/form",(req,res)=>{
 })
 
 router.get("/preview2",(req,res)=>{
-    console.log(`preview2 = ${req.isAuthenticated()}`)
     if(req.isAuthenticated()){
         res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
     }
@@ -50,7 +46,6 @@ router.get("/preview2",(req,res)=>{
 })
 
 router.get("/preview",(req,res)=>{
-    console.log(`preview = ${req.isAuthenticated()}`)
     if(req.isAuthenticated()){
         res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
     }
@@ -71,26 +66,20 @@ router.get("/home",(req,res)=>{
     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
 })
 
-// router.use(function(req, res, next) {
-//     res.status(404);
-//     // respond with html page
-//     if (req.accepts('html')) {
-//         res.render("errorPage", { url: req.url });
-//         return;
-//     }
-// });
-
-// router.get("/:customRouteName",(req,res)=>{
-//     // const customRouteName = _.capitalize(req.params.customRouteName);
-//     // res.render(customRouteName,{patientDetails: req.body,patient_id:req.body.id});
-//     res.render("errorPage");
-// })
-
 router.get("/form/:id",(req,res)=>{
     Patient.findById(req.params.id,(err,patient)=>{
         if(err) console.log(err);
         else{
-            res.render("form",{patientDetails:patient});
+            res.render("form",{patientDetails:patient,patient_id:req.params.id});
+        }
+    })
+})
+
+router.get("/printForm/:id",(req,res)=>{
+    Patient.findById(req.params.id,(err,patient)=>{
+        if(err) console.log(err);
+        else{
+            res.render("printForm",{patientDetails:patient,patient_id:req.params.id});
         }
     })
 })
@@ -100,9 +89,8 @@ router.get("/*",(req,res)=>{
 })
 
 router.post("/preview",(req,res)=>{
-    console.log(req.user);
     patient = new Patient({ pages: req.body, doctor: req.user.username });
-    res.render("preview",{patientDetails: req.body,patient_id: patient._id});
+    res.render("preview",{patientDetails: req.body,patient_id: undefined});
 })
 
 router.post("/preview/:id", (req, res)=>{
@@ -148,47 +136,36 @@ router.post("/form/:id",(req,res)=>{
     })
 })
 
+router.post("/home",(req,res)=>{
+    patient.save().then(()=>console.log("successfully saved")).catch((err)=>{
+        console.log(err);
+    });
+    req.flash("success","Form submited successfully!");
+    res.render("home",{
+        successMessage: req.flash("success"),
+        errorMessage: req.flash("error"),
+        successUpdatedMessage: req.flash("successUpdated"),
+        patientDetails: patientData,
+        patient_id: req.params.id
+    });
+})
+
 router.post("/home/:id",(req,res)=>{
-    Patient.countDocuments({_id: req.params.id},(err,count)=>{
-        console.log(`${req.user.username} created this patient`);
-        if(count > 0){
-            Patient.findByIdAndUpdate(req.params.id, {'pages': patientData, 'doctor': req.user.email}, (err,patient)=>{
-                if(err) console.log(err);
-                else {
-                    console.log("Successfully updated");
-                    req.flash("successUpdated","Form updated successfully!")
-                    req.flash("error");
-                    res.render("home",{
-                        successUpdatedMessage: req.flash("successUpdated"),
-                        errorMessage: req.flash("error"),
-                        successMessage: req.flash("success"),
-                        patientDetails: patientData,
-                        patient_id: req.params.id
-                    });
-                }
-            })
-        }
-        else{
-            console.log("else e jacche")
-            patient.save().then(()=>console.log("successfull")).catch((err)=>{
-                console.log(err);
-            });
-            req.flash("success","Form submited successfully!");
+    Patient.findByIdAndUpdate(req.params.id, {'pages': patientData, 'doctor': req.user.username}, (err,patient)=>{
+        if(err) console.log(err);
+        else {
+            console.log("Successfully updated");
+            req.flash("successUpdated","Form updated successfully!")
+            req.flash("error");
             res.render("home",{
-                successMessage: req.flash("success"),
-                errorMessage: req.flash("error"),
                 successUpdatedMessage: req.flash("successUpdated"),
+                errorMessage: req.flash("error"),
+                successMessage: req.flash("success"),
                 patientDetails: patientData,
                 patient_id: req.params.id
             });
         }
     })
 })
-
-// router.post("/export",(req,res)=>{
-//     Post.findOne
-// })
-
-
 
 module.exports = router;

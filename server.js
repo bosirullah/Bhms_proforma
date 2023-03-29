@@ -12,16 +12,13 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
+const password = process.env.PASSWORD;
+
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/patientlistDB");
+mongoose.connect("mongodb+srv://atlas-admin:" + password + "@bhmsproformacluster.hozzyuc.mongodb.net/patientlistDB");
 
 app.use(userRoutes);
 app.use(routes);
-
-
-// app.get("/practic",(req,res)=>{
-//   res.render("practic");
-// })
 
 
 const PORT = process.env.PORT || 3000;

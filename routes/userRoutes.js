@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const findOrCreate = require("mongoose-findorcreate");
+
 const LocalStrategy = require("passport-local").Strategy;
 const _ = require("lodash");
 const flash = require("connect-flash");
@@ -38,7 +37,6 @@ userSchema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User",userSchema);
 
-// passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new LocalStrategy({ usernameField: 'email' },(email, password, done) => {
     User.findOne({ email: email }, (err, user) => {
         if (err) { return done(err); }
@@ -126,7 +124,6 @@ router.post("/login", function(req, res){
                     email: user.email
                 };
                 req.user = authenticatedUser;
-                // res.redirect("/home");
             });
         }
     });
@@ -134,11 +131,3 @@ router.post("/login", function(req, res){
 });
 
 module.exports = router;
-
-{/* <div class="alert">
-        <% for(let i=0;i<errors.length;i++) {%>
-            <p class="text-center mt-3 error_message">
-                <%= errors[i] %> !
-            </p>
-            <% } %>
-    </div> */}

@@ -24,9 +24,22 @@
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
                 <button type="submit" formaction="/home/<%= patient_id %>"
                     class="btn btn-warning rounded px-4 text-white">Submit</button>
-                <button type="submit" formaction="/form/<%= patient_id %>"
-                    class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
+                <% if(patient_id) { %>
+                    <button type="submit" formaction="/form/<%= patient_id %>"
+                        class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
+                    <button class="btn btn-success" onclick="printForm()">Print Form</button>
+                <% } %>
             </div>
         </form>
     </div>
+        
+    <% var patientId =  patient_id; %>
+
+    <script>        
+        function printForm() { 
+            // Open the form data in a new window for printing
+            var formDataWindow = window.open('/printForm/<%= patientId %>' , '_blank');
+                
+        }
+    </script>
     <%- include("partials/footer") %>

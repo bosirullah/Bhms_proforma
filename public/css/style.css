@@ -43,9 +43,10 @@ h5 {
 }
 
 .page {
-  padding: 1.5rem 2rem;
+  padding: 2.5rem 2rem;
   border-radius: 20px;
   height: 100vh;
+  /* margin-top: 4rem; */
 }
 
 .heading {
@@ -237,6 +238,7 @@ input:disabled {
   margin: 20px auto;
 }
 
+
 /* Login mobile responsive  */
 @media (max-width: 1024px) {
   .alert {
@@ -414,5 +416,6 @@ input:disabled {
   height: 100vh;
   width: 100%;
   position: fixed;
-  z-index: 100;
+  top:0;
+  z-index: 9999;
 }
