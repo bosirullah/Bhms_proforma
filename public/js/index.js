@@ -31,7 +31,7 @@ addRow.on("click", () => {
       <tr>
         <td>
             <select name="disease_name" id="disease_name" class="select_area" style="padding: 0.8rem;">
-              <option value="<%= patientDetails.disease_name %>"><%= patientDetails.disease_name %></option>
+              <option value="<%= patientDetails.disease_name %>">-select-</option>
               <option value="Typhoid">Typhoid</option>
               <option value="Malaria">Malaria</option>
               <option value="Dengue">Dengue</option>
@@ -111,7 +111,12 @@ $(window).on("load", () => {
   loader.css("display", "none");
 });
 
-// const loader = document.getElementById("preloader");
-// window.addEventListener("load", () => {
-//   loader.style.display = "none"
-// })
+$(document).ready(function() {
+  // Show the flash message with animation
+  $("#flash-message").fadeIn(1000, function() {
+    // After the animation is complete, hide the flash message after 5 seconds
+    setTimeout(function() {
+      $("#flash-message").fadeOut(1000);
+    }, 2000);
+  });
+});

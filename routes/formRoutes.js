@@ -7,24 +7,23 @@ const session = require("express-session");
 
 const router = express.Router();
 const Patient = require("../models/patient");
-
+const {parse} = require("json2csv");
+const fs = require("fs");
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
-
 //set cookeParser,session and flash
 router.use(cookieParser('keyboard cat'));
 router.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
+    cookie: { maxAge: 60000 }
 }))
 router.use(flash());
 
 let patient;
 let patientData;
-
-
 
 router.get("/contact",(req,res)=>{
     res.send(req.flash("message"));
@@ -63,12 +62,29 @@ router.get("/home",(req,res)=>{
     if(req.isAuthenticated()){
         res.render("home",{
             errorMessage: req.flash("error"),
+            successMessage: req.flash("success"),
+            successUpdatedMessage: req.flash("successUpdated"),
             patientDetails: req.body,
-            patient_id:req.body.id
+            patient_id:req.body.id,
         });
     }
     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
 })
+
+// router.use(function(req, res, next) {
+//     res.status(404);
+//     // respond with html page
+//     if (req.accepts('html')) {
+//         res.render("errorPage", { url: req.url });
+//         return;
+//     }
+// });
+
+// router.get("/:customRouteName",(req,res)=>{
+//     // const customRouteName = _.capitalize(req.params.customRouteName);
+//     // res.render(customRouteName,{patientDetails: req.body,patient_id:req.body.id});
+//     res.render("errorPage");
+// })
 
 router.get("/form/:id",(req,res)=>{
     Patient.findById(req.params.id,(err,patient)=>{
@@ -98,7 +114,7 @@ router.post("/preview/:id", (req, res)=>{
 router.post("/preview2",(req,res)=>{
     const ref_no = req.body.ref_no;
     const fullName = req.body.fullName;
-    const phoneNo = req.body.phoneNo;    
+    const phoneNo = req.body.phoneNo;
 
     Patient.findOne({ $or: [{'pages.ref_no': ref_no}, {'pages.fullName': fullName}, {'pages.phoneNo': phoneNo}] , 'doctor': req.user.username}, (err, data)=>{
         if(err){
@@ -140,7 +156,15 @@ router.post("/home/:id",(req,res)=>{
                 if(err) console.log(err);
                 else {
                     console.log("Successfully updated");
-                    res.render("home",{patientDetails: patientData, patient_id:req.params.id});
+                    req.flash("successUpdated","Form updated successfully!")
+                    req.flash("error");
+                    res.render("home",{
+                        successUpdatedMessage: req.flash("successUpdated"),
+                        errorMessage: req.flash("error"),
+                        successMessage: req.flash("success"),
+                        patientDetails: patientData,
+                        patient_id: req.params.id
+                    });
                 }
             })
         }
@@ -149,11 +173,17 @@ router.post("/home/:id",(req,res)=>{
             patient.save().then(()=>console.log("successfull")).catch((err)=>{
                 console.log(err);
             });
-            res.render("home",{patientDetails: patientData, patient_id:req.params.id});
+            req.flash("success","Form submited successfully!");
+            res.render("home",{
+                successMessage: req.flash("success"),
+                errorMessage: req.flash("error"),
+                successUpdatedMessage: req.flash("successUpdated"),
+                patientDetails: patientData,
+                patient_id: req.params.id
+            });
         }
     })
 })
-
 
 // router.post("/export",(req,res)=>{
 //     Post.findOne

@@ -1,7 +1,7 @@
 <%- include("partials/header"); %>
 
     <% if (successMessage.length !==0) { %>
-        <div class="alert alert-success text-center p-2">
+        <div id="flash-message" class="alert alert-success text-center mx-auto p-2">
             <strong style="font-size: 20px"><i class="fa-solid fa-circle-check mx-3"></i>
                 <%= successMessage %>
             </strong>
@@ -9,7 +9,7 @@
         <% } %>
 
             <% if (errorMessage.length !==0) { %>
-                <div class="alert alert-danger mx-auto text-center my-3 p-2">
+                <div id="flash-message" class="alert alert-danger mx-auto text-center my-3 p-2" style="display:none;">
                     <strong>
                         <%= errorMessage %>
                     </strong>
