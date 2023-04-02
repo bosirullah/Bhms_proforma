@@ -238,6 +238,9 @@ input:disabled {
   margin: 20px auto;
 }
 
+.dropdown-toggle{
+  margin: 3rem 29rem 0;
+}
 
 /* Login mobile responsive  */
 @media (max-width: 1024px) {

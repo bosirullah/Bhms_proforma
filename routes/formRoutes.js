@@ -53,7 +53,6 @@ router.get("/preview",(req,res)=>{
 })
 
 router.get("/home",(req,res)=>{
-    console.log(`home = ${req.isAuthenticated()}`)
     if(req.isAuthenticated()){
         res.render("home",{
             errorMessage: req.flash("error"),

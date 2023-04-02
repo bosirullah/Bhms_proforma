@@ -7,6 +7,7 @@ const rowNext = $("#lastRowNext");
 const select = $("select");
 const option = $("option");
 
+
 function resizingTextarea() {
   $("textarea")
     .each(function () {
@@ -24,6 +25,8 @@ function resizingTextarea() {
 }
 
 resizingTextarea();
+
+
 
 addRow.on("click", () => {
   nextRow.append(
@@ -120,3 +123,28 @@ $(document).ready(function() {
     }, 2000);
   });
 });
+
+//dropdown in the home page
+const dropdownItem = $(".dropdown-item");
+
+dropdownItem.on("click",function(){
+  let serach_btn;
+  
+  if(this.id === "ref_no_btn"){
+    search_btn = $("#1");
+    $("#2").attr("style","display:none");
+    $("#3").attr("style","display:none");
+  }
+  else if(this.id === "name_btn"){
+    search_btn = $("#2");
+    $("#1").attr("style","display:none");
+    $("#3").attr("style","display:none");
+  }
+  else{
+    search_btn = $("#3");
+    $("#1").attr("style","display:none");
+    $("#2").attr("style","display:none");
+  }
+
+  search_btn.removeAttr("style");
+})
