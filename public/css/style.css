@@ -238,8 +238,14 @@ input:disabled {
   margin: 20px auto;
 }
 
-.dropdown-toggle{
-  margin: 3rem 29rem 0;
+.dropdown-toggle,.dropdown-menu{
+  width: 20rem;
+}
+
+.search_container{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
 /* Login mobile responsive  */

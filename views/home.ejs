@@ -30,18 +30,20 @@
             </div>
         <% } %>
 
-        <div class="dropdown">
-            <button class="btn btn-outline-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Select
-            </button>
-            <ul class="dropdown-menu">
-                <li><button id="ref_no_btn" class="dropdown-item" type="button" name="ref_no_btn">ref_no</button></li>
-                <li><button id="name_btn" class="dropdown-item" type="button" name="name_btn">Name</button></li>
-                <li><button id="phone_no_btn" class="dropdown-item" type="button" name="phone_no_btn">Phone no</button></li>
-            </ul>
+        <div class="search_container">
+            <div class="dropdown">
+                <button class="btn btn-outline-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button id="ref_no_btn" class="dropdown-item" type="button" name="ref_no_btn">ref_no</button></li>
+                    <li><button id="name_btn" class="dropdown-item" type="button" name="name_btn">Name</button></li>
+                    <li><button id="phone_no_btn" class="dropdown-item" type="button" name="phone_no_btn">Phone no</button></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="h-100 my-5 pt-5">
+        <div class="h-50 my-5 pt-5">
             <form action="/preview2" method="post"
                 class="d-flex align-items-center justify-content-center gap-3 flex-wrap flex-column flex-xxl-row">
                 <div id="1" style="display:none">

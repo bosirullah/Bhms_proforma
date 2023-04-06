@@ -43,7 +43,9 @@
         <h1 class="form-data-heading">CASE TAKING PROFORMA</h1>
         <ol>
             <% for (let prop in patientDetails.pages) { %>
-                <li><strong class="prop"><%= prop %>:</strong>  <%= patientDetails.pages[prop] %></li>
+                <% if( patientDetails.pages[prop] !== "") { %>
+                    <li><strong class="prop"><%= prop %>:</strong>  <%= patientDetails.pages[prop] %></li>
+                <% } %>
             <% } %>
         </ol>
         <button id="printBtn" class="btn btn-primary btn-lg my-4"  onclick="window.print()">Print</button>        
