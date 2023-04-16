@@ -15,7 +15,6 @@ router.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
 }))
 
 router.use(flash());
@@ -103,7 +102,7 @@ router.post("/preview2",(req,res)=>{
     const fullName = req.body.fullName;
     const phoneNo = req.body.phoneNo;
 
-    Patient.findOne({ $or: [{'pages.ref_no': ref_no}, {'pages.fullName': fullName}, {'pages.phoneNo': phoneNo}] , 'doctor': req.user.username}, (err, data)=>{
+    Patient.findOne({ $or: [{'pages.ref_no': ref_no}, {'pages.fullName': fullName}, {'pages.contact': phoneNo}] , 'doctor': req.user.username}, (err, data)=>{
         if(err){
             console.log(err);
         }

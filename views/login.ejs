@@ -6,32 +6,39 @@
                 <%= successMessage %>
             </strong>
         </div>
-        <% } %>
+    <% } %>
 
-            <% if (errorMessage.length !==0) { %>
-                <div id="flash-message" class="alert alert-danger mx-auto text-center my-3 p-2" style="display:none;">
-                    <strong>
-                        <%= errorMessage %>
-                    </strong>
-                </div>
-                <% } %>
+    <% if (errorMessage.length !==0) { %>
+        <div id="flash-message" class="alert alert-danger mx-auto text-center my-3 p-2" style="display:none;">
+            <strong> <%= errorMessage %> </strong>
+        </div>
+    <% } %>
 
-                    <div class="login_form">
-                        <form action="/login" method="post" class="form-signin border position-relative top-50">
-                            <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" alt="" width="72"
-                                height="72">
-                            <h2 class="text-center text-white mb-5">Login Here!</h2>
+    <div class="login_form">
+        <form action="/login" method="post" class="form-signin border position-relative top-50">
+            <img class="mb-4 d-block mx-auto rounded-circle" src="images/avatar.webp" alt="" width="72"
+                height="72">
+            <h2 class="text-center text-white mb-5">Login Here!</h2>
 
-                            <input type="text" id="inputEmail" name="username" class="form-control my-4"
-                                placeholder="Username" required autofocus>
+            <input type="text" id="inputEmail" name="username" class="form-control my-4" placeholder="Username" required autofocus>
 
-                            <input type="password" id="inputPassword" name="password" class="form-control"
-                                placeholder="Password" required>
-                            <button class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto" type="submit">Log
-                                in</button>
-                        </form>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+            <input type="checkbox" id="checkbox" onclick="togglePassword()">
+            <label for="checkbox">Show password</label>
+            <button class="btn btn-lg btn-primary btn-block mt-5 d-block w-50 mx-auto" type="submit">Log in</button>
+        </form>
+    </div>
 
+    <script>
+        function togglePassword() {
+            var pword = document.getElementById("inputPassword");
+            if (pword.type === "password") {
+                pword.type = "text";
+            } 
+            else {
+                pword.type = "password";
+            }
+        }
+    </script>
 
-                    </div>
-
-                    <%- include("partials/footer"); %>
+<%- include("partials/footer"); %>
