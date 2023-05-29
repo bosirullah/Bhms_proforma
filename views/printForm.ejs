@@ -36,13 +36,97 @@
                 display: none;
             }
         }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
     <div class="form-data">
         <h1 class="form-data-heading">CASE TAKING PROFORMA</h1>
         <ol>
-            <% for (let prop in patientDetails.pages) { %>
+            
+            <% for (let prop in patientDetails.pages) { %>  
+                <% if ( prop === "disease_name") { %>
+                    <table style="border-collapse: collapse; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 8px;">DISEASE NAME</th>
+                                <th style="border: 1px solid black; padding: 8px;">TIMEOF</th>
+                                <th style="border: 1px solid black; padding: 8px;">TREATMENT</th>
+                                <th style="border: 1px solid black; padding: 8px;">RESULT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(typeof(patientDetails.pages.disease_name) ==="string"){ %>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.disease_name %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.timeOf %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.treatment %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.result %></td>   
+                                    <% continue; %> 
+                                </tr>
+                            <% } %>
+                            <% for(let i=0;i<patientDetails.pages.disease_name.length;i++){ %>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.disease_name[i] %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.timeOf[i] %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.treatment[i] %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.result[i] %></td>    
+                                </tr>
+                            <% } %>
+                            
+                        </tbody>
+                    </table>
+                    <% continue; %>
+                <% } %>
+
+                <% if ( prop === "prescriptionDate") { %>
+                    
+                    <table style="border-collapse: collapse; width: 100%; margin-top: 2rem;">
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 8px;">DATE</th>
+                                <th style="border: 1px solid black; padding: 8px;">REMARKS</th>
+                                <th style="border: 1px solid black; padding: 8px;">RS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(typeof(patientDetails.pages.prescriptionDate) ==="string"){ %>
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionDate %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionRemarks %></td>
+                                    <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionRx %></td> 
+                                </tr>
+                            <% }else{ %>
+                                <% for(let i=0;i<patientDetails.pages.prescriptionDate.length;i++){ %>
+                                    <tr>
+                                        <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionDate[i] %></td>
+                                        <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionRemarks[i] %></td>
+                                        <td style="border: 1px solid black; padding: 8px; word-wrap: break-word;"><%= patientDetails.pages.prescriptionRx[i] %></td>
+                                    </tr>
+                                <% } %>     
+                            <% } %>
+                            
+                        </tbody>
+                    </table>
+                    <% continue; %>
+                <% } %>
+
+                <% if(prop === "disease_name" || prop === "timeOf" || prop === "treatment" || prop === "result") continue; %>
+                <% if(prop === "prescriptionDate" || prop === "prescriptionRemarks" || prop === "prescriptionRx") continue; %>
+
+                
                 <% if( patientDetails.pages[prop] !== "") { %>
                     <li><strong class="prop"><%= prop %>:</strong>  <%= patientDetails.pages[prop] %></li>
                 <% } %>
