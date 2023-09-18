@@ -226,11 +226,16 @@ input:disabled {
   font-size: 1.2rem;
 }
 
+.dropdown_list{
+  position: absolute;
+  top: 20%;
+  left: 40%;
+}
+
 .new_application_btn {
   display: block;
   width: 200px;
   padding: 0.8rem;
-  margin: 5rem 0;
 }
 
 .alert {
@@ -244,14 +249,19 @@ input:disabled {
 
 .search_container{
   display: flex;
-  justify-content: center;
-  margin-top: 5rem;
+  justify-content: space-between;
+  margin-top: 7rem;
 }
 
 /* Login mobile responsive  */
 @media (max-width: 1024px) {
   .alert {
     width: 80%;
+  }
+
+  .search_container{
+    display: flex;
+    flex-direction: column;
   }
 }
 @media (max-width: 740px) {

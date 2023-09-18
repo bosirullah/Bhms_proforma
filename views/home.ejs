@@ -2,7 +2,8 @@
 
     <div class="page">
         <form action="/logout" class="m-l-auto d-flex justify-content-end">
-            <button class="btn btn-danger btn-md btn-lg">Log Out</button>
+            <a class="btn btn-success btn-lg mt-4 mx-3" href="/home" role="button">Home</a>
+        <button class="btn btn-danger btn-lg mt-4">Log Out</button>
         </form>
 
         <% if (errorMessage.length !==0) { %>
@@ -41,38 +42,57 @@
                     <li><button id="phone_no_btn" class="dropdown-item" type="button" name="phone_no_btn">Phone no</button></li>
                 </ul>
             </div>
+
+            <div class="dropdown_list">
+                <form action="/preview2" method="post">
+                    <div id="1" style="display:none">
+                        <label for="">Enter reference number: </label><br>
+                        <input type="number" name="ref_no" placeholder="Enter reference number" autocomplete="off">
+                        <button type="submit" class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                    </div>
+                    <div id="2" style="display:none">
+                        <label for="">Enter name: </label><br>
+                        <input type="text" name="fullName" placeholder="Enter name" autocomplete="off">
+                        <button type="submit" class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                    </div>
+                    <div id="3" style="display:none">
+                        <label for="">Enter phone number</label><br>
+                        <input type="number" name="phoneNo" placeholder="Enter phone no" autocomplete="off">
+                        <button type="submit" class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
+                    </div>
+                </form>
+            </div>
+            <a class="btn btn-primary new_application_btn" href="/form" role="button">New application</a>
         </div>
 
-        <div class="h-50 my-5 pt-5">
-            <form action="/preview2" method="post"
-                class="d-flex align-items-center justify-content-center gap-3 flex-wrap flex-column flex-xxl-row">
-                <div id="1" style="display:none">
-                    <label for="">Enter reference number: </label><br>
-                    <input type="number" name="ref_no" placeholder="Enter reference number"
-                        autocomplete="off">
-                    <button type="submit"
-                        class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
-                </div>
-                <div id="2" style="display:none">
-                    <label for="">Enter name: </label><br>
-                    <input type="text" name="fullName" placeholder="Enter name"
-                        autocomplete="off">
-                    <button type="submit"
-                        class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
-                </div>
-                <div id="3" style="display:none">
-                    <label for="">Enter phone number</label><br>
-                    <input type="number" name="phoneNo" placeholder="Enter phone no"
-                        autocomplete="off">
-                    <button type="submit"
-                        class="btn btn-outline-success  mt-sm-0 py-2 btn-lg mt-2 mt-xs-0">Search</button>
-                </div>
-            </form>
-            <a class="btn btn-primary mx-auto new_application_btn" href="/form"
-                role="button">New application</a>
+        <table style="border-collapse: collapse; width: 100%; margin-top: 2rem; color: white;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid white; padding: 8px; width: 10%">Ref No</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 30%">Name</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 30%">Contact</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 15%">Date</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 10%">Sex</th>
+                </tr>
 
-        </div>
+                <% for(let i=0;i<patientDetails.length;i++){ %>
+                    <% if(patientDetails[i].doctor === username) { %>
+                        <tr>
+                            <td style="border: 1px solid white; padding: 8px; width: 10%; color: white"><%= patientDetails[i].pages.ref_no %></td>
+                            <td style="border: 1px solid white; padding: 8px; width: 10%; color: white"><%= patientDetails[i].pages.fullName %></td>
+                            <td style="border: 1px solid white; padding: 8px; width: 10%; color: white"><%= patientDetails[i].pages.contact %></td>
+                            <td style="border: 1px solid white; padding: 8px; width: 10%; color: white"><%= patientDetails[i].pages.date %></td>
+                            <td style="border: 1px solid white; padding: 8px; width: 10%; color: white"><%= patientDetails[i].pages.sex %></td>
+                            <td style="border: 1px solid white; padding: 8px; width: 5%;">
+                                <a href="/preview/<%= patientDetails[i]._id %>" class="btn btn-primary btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% } %>
 
+                
+            </thead>
+        </table>
     </div>
 
     <%- include("partials/footer") %>

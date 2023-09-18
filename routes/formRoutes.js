@@ -51,18 +51,33 @@ router.get("/preview",(req,res)=>{
     else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
 })
 
-router.get("/home",(req,res)=>{
-    if(req.isAuthenticated()){
-        res.render("home",{
-            errorMessage: req.flash("error"),
-            successMessage: req.flash("success"),
-            successUpdatedMessage: req.flash("successUpdated"),
+router.get("/home", async (req, res) => {
+    if (req.isAuthenticated()) {
+        try {
+            // Fetch all patient data from MongoDB Atlas
+            const patientDetails = await Patient.find();
+            const username = req.user.username;
+            
+            res.render("home", {
+                errorMessage: req.flash("error"),
+                successMessage: req.flash("success"),
+                successUpdatedMessage: req.flash("successUpdated"),
+                patientDetails: patientDetails, // Pass the fetched data
+                patient_id: req.body.id, // Assuming you need this for some reason
+                username
+            });
+        } catch (error) {
+            console.error(error);
+            req.flash("error", "Failed to fetch patient data from the database.");
+            res.redirect("/home"); // Redirect or handle the error appropriately
+        }
+    } else {
+        res.render("main", {
             patientDetails: req.body,
-            patient_id:req.body.id,
+            patient_id: req.body.id,
         });
     }
-    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
-})
+});
 
 router.get("/form/:id",(req,res)=>{
     Patient.findById(req.params.id,(err,patient)=>{
@@ -80,6 +95,24 @@ router.get("/printForm/:id",(req,res)=>{
             res.render("printForm",{patientDetails:patient,patient_id:req.params.id});
         }
     })
+})
+
+router.get("/preview/:id",(req,res)=>{
+    // Retrieve the patient ID from the URL parameter
+    const patientId = req.params.id;
+    // console.log(patientId)
+
+    // Look up the patient by ID and render the form with the patient's data
+    Patient.findById(patientId, (err, patient) => {
+        if (err) {
+            console.error(err);
+            req.flash("error", "Failed to fetch patient data.");
+            return res.redirect("/home");
+        }
+        console.log("patient = ",patient)
+        // Render the form with patient data
+        res.render("preview", { patientDetails:patient.pages,patient_id:patientId });
+    });
 })
 
 router.get("/*",(req,res)=>{
