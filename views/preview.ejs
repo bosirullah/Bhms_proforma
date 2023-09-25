@@ -1,12 +1,16 @@
 <%- include("partials/header") %>
 
     <form action="/logout" class="m-x-auto d-flex justify-content-end gap-3">
-        <a class="btn btn-success btn-lg mt-4" href="/home" role="button">Home</a>
-        <button class="btn btn-danger btn-lg mt-4">Log Out</button>
+        <a class="btn btn-success btn-md mt-4" href="/home" role="button">Home</a>
+        <button class="btn btn-danger btn-md mt-4">Log Out</button>
     </form>
     <div class="page">
-
+        
         <form action="" method="post">
+            <% if(patient_id) { %>
+                <button type="submit" formaction="/form/<%= patient_id %>" method="post" class="edit_btn btn btn-primary rounded px-4 mx-2 text-white ">Edit</button>
+                <button class="btn btn-success" onclick="printForm()">Print Form</button>
+            <% } %>
             <fieldset disabled class="form_box">
                 <%- include("pages/page1") %>
             </fieldset>
@@ -23,11 +27,9 @@
                 <%- include("pages/page5") %>
             </fieldset>
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" formaction="/home/<%= patient_id %>"
-                    class="btn btn-warning rounded px-4 text-white">Submit</button>
+                <button type="submit" formaction="/home/<%= patient_id %>" class="btn btn-warning rounded px-4 text-white">Submit</button>
                 <% if(patient_id) { %>
-                    <button type="submit" formaction="/form/<%= patient_id %>"
-                        class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
+                    <button type="submit" formaction="/form/<%= patient_id %>" class="edit_btn btn btn-primary rounded px-4 text-white ">Edit</button>
                     <button class="btn btn-success" onclick="printForm()">Print Form</button>
                 <% } %>
             </div>

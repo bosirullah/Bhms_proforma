@@ -227,9 +227,7 @@ input:disabled {
 }
 
 .dropdown_list{
-  position: absolute;
-  top: 20%;
-  left: 40%;
+  display: flex;
 }
 
 .new_application_btn {
@@ -251,6 +249,7 @@ input:disabled {
   display: flex;
   justify-content: space-between;
   margin-top: 7rem;
+  margin-bottom: 4rem;
 }
 
 /* Login mobile responsive  */
@@ -262,6 +261,9 @@ input:disabled {
   .search_container{
     display: flex;
     flex-direction: column;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media (max-width: 740px) {

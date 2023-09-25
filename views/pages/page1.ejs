@@ -1,9 +1,9 @@
-<h1 class="my-4 main_heading">CASE TAKING PROFORMA</h1>
+<h1 class="my-5 main_heading">CASE TAKING PROFORMA</h1>
 <h2 class="py-4">1. IDENTIFICATION</h2>
 <div class="row align-items-center gap-2 mt-4">
     <label for="ref_no">Ref no :</label>
     <div class="col">
-        <input type="text" id="ref_no" name="ref_no" value="<%= patientDetails.ref_no%>">
+        <input id="ref_no" name="ref_no" value="<%= ref_no %>" disabled>
     </div>
     <div class="col">
         <input type="date" id="date" class="w-auto" name="date" value="<%= patientDetails.date %>">
@@ -12,9 +12,7 @@
 <div class="col-md-6">
     <label for="sex">Sex </label><br>
     <select name="sex" id="sex" class="select_area" style="padding: 0.8rem;">
-        <option value="<%= patientDetails.sex %>">
-            <%= patientDetails.sex %>
-        </option>
+        <option value="<%= patientDetails.sex %>"><%= patientDetails.sex %> </option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Others">Others</option>

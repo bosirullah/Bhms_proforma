@@ -1,8 +1,8 @@
 <%- include("partials/header") %>
     
     <form action="/logout" class="m-x-auto d-flex justify-content-end gap-3">
-        <a class="btn btn-success btn-lg mt-4" href="/home" role="button">Home</a>
-        <button class="btn btn-danger btn-lg mt-4">Log Out</button>
+        <a class="btn btn-success btn-md mt-4" href="/home" role="button">Home</a>
+        <button class="btn btn-danger btn-md mt-4">Log Out</button>
     </form>
 
     <div class="page">
@@ -23,9 +23,11 @@
                 <%- include("pages/page5") %>
             </fieldset>
             <div class="d-flex align-items-center justify justify-content-center gap-3 py-3">
-                <button type="submit" formaction="/preview/<%= patient_id %>"
-                    class="btn btn-primary rounded px-4 text-white">Preview</button>
-                <!-- <button type="submit" formaction="/preview" class="btn btn-danger rounded px-4 text-white">Update</button> -->
+                <% if(patient_id) { %>
+                    <button type="submit" formaction="/preview/<%= patient_id %>" class="btn btn-primary rounded px-4 text-white">Preview</button>
+                <% } else { %>
+                    <button type="submit" formaction="/preview" class="btn btn-primary rounded px-4 text-white">Preview</button>
+                <% } %>
             </div>
         </form>
     </div>
