@@ -10,25 +10,27 @@ const Patient = require("../models/patient");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 //set cookeParser,session and flash
-router.use(cookieParser('keyboard cat'));
-router.use(session({
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
-}))
+router.use(cookieParser("keyboard cat"));
+router.use(
+    session({
+        secret: "keyboard cat",
+        resave: true,
+        saveUninitialized: true,
+    })
+);
 
 router.use(flash());
 
 let patient;
 let patientData;
 
-router.get("/contact",(req,res)=>{
+router.get("/contact", (req, res) => {
     res.send(req.flash("message"));
-})
+});
 
-router.get("/errorPage",(req,res)=>{
-    res.render("errorPage")
-})
+router.get("/errorPage", (req, res) => {
+    res.render("errorPage");
+});
 
 router.get("/form", async (req, res) => {
     try {
@@ -43,9 +45,17 @@ router.get("/form", async (req, res) => {
         const refNoValue = defaultRefNo ? defaultRefNo.ref_no + 1 : 1;
 
         if (req.isAuthenticated()) {
-            res.render("form", { patientDetails: req.body, patient_id: req.body.id, ref_no: refNoValue });
+            res.render("form", {
+                patientDetails: req.body,
+                patient_id: req.body.id,
+                ref_no: refNoValue,
+            });
         } else {
-            res.render("main", { patientDetails: req.body, patient_id: req.body.id, ref_no: refNoValue });
+            res.render("main", {
+                patientDetails: req.body,
+                patient_id: req.body.id,
+                ref_no: refNoValue,
+            });
         }
     } catch (error) {
         console.error(error);
@@ -54,12 +64,18 @@ router.get("/form", async (req, res) => {
     }
 });
 
-router.get("/preview2",(req,res)=>{
-    if(req.isAuthenticated()){
-        res.render("preview",{patientDetails: req.body,patient_id:req.body.id});
-    }
-    else res.render("main",{patientDetails: req.body,patient_id:req.body.id});
-})
+router.get("/preview2", (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render("preview", {
+            patientDetails: req.body,
+            patient_id: req.body.id,
+        });
+    } else
+        res.render("main", {
+            patientDetails: req.body,
+            patient_id: req.body.id,
+        });
+});
 
 router.get("/preview", async (req, res) => {
     try {
@@ -74,9 +90,17 @@ router.get("/preview", async (req, res) => {
         const refNoValue = defaultRefNo ? defaultRefNo.ref_no + 1 : 1;
 
         if (req.isAuthenticated()) {
-            res.render("preview", { patientDetails: req.body, patient_id: req.body.id, ref_no: refNoValue });
+            res.render("preview", {
+                patientDetails: req.body,
+                patient_id: req.body.id,
+                ref_no: refNoValue,
+            });
         } else {
-            res.render("main", { patientDetails: req.body, patient_id: req.body.id, ref_no: refNoValue });
+            res.render("main", {
+                patientDetails: req.body,
+                patient_id: req.body.id,
+                ref_no: refNoValue,
+            });
         }
     } catch (error) {
         console.error(error);
@@ -85,25 +109,27 @@ router.get("/preview", async (req, res) => {
     }
 });
 
-
 router.get("/home", async (req, res) => {
     if (req.isAuthenticated()) {
         try {
             // Fetch all patient data from MongoDB Atlas
             const patientDetails = await Patient.find();
             const username = req.user.username;
-            
+
             res.render("home", {
                 errorMessage: req.flash("error"),
                 successMessage: req.flash("success"),
                 successUpdatedMessage: req.flash("successUpdated"),
                 patientDetails: patientDetails, // Pass the fetched data
                 patient_id: req.body.id, // Assuming you need this for some reason
-                username
+                username,
             });
         } catch (error) {
             console.error(error);
-            req.flash("error", "Failed to fetch patient data from the database.");
+            req.flash(
+                "error",
+                "Failed to fetch patient data from the database."
+            );
             res.redirect("/home"); // Redirect or handle the error appropriately
         }
     } else {
@@ -133,19 +159,25 @@ router.get("/form/:id", (req, res) => {
 
         ref_no = patient.ref_no;
         // Render the form page with patient data
-        res.render("form", { patientDetails: patient.pages, patient_id: patientId,ref_no });
+        res.render("form", {
+            patientDetails: patient.pages,
+            patient_id: patientId,
+            ref_no,
+        });
     });
 });
 
-
-router.get("/printForm/:id",(req,res)=>{
-    Patient.findById(req.params.id,(err,patient)=>{
-        if(err) console.log(err);
-        else{
-            res.render("printForm",{patientDetails:patient,patient_id:req.params.id});
+router.get("/printForm/:id", (req, res) => {
+    Patient.findById(req.params.id, (err, patient) => {
+        if (err) console.log(err);
+        else {
+            res.render("printForm", {
+                patientDetails: patient,
+                patient_id: req.params.id,
+            });
         }
-    })
-})
+    });
+});
 
 router.get("/preview/:id", async (req, res) => {
     try {
@@ -169,7 +201,11 @@ router.get("/preview/:id", async (req, res) => {
             const refNoValue = patient.ref_no;
 
             // Render the preview page with patient data and ref_no
-            res.render("preview", { patientDetails: patient.pages, patient_id: patientId, ref_no: refNoValue });
+            res.render("preview", {
+                patientDetails: patient.pages,
+                patient_id: patientId,
+                ref_no: refNoValue,
+            });
         });
     } catch (error) {
         console.error(error);
@@ -178,9 +214,9 @@ router.get("/preview/:id", async (req, res) => {
     }
 });
 
-router.get("/*",(req,res)=>{
+router.get("/*", (req, res) => {
     res.render("errorPage");
-})
+});
 
 router.post("/preview", async (req, res) => {
     try {
@@ -195,13 +231,21 @@ router.post("/preview", async (req, res) => {
         const refNoValue = defaultRefNo ? defaultRefNo.ref_no + 1 : 1;
 
         // Create a new patient record with the incremented ref_no
-        const patient = new Patient({ pages: req.body, doctor: req.user.username, ref_no: refNoValue });
+        const patient = new Patient({
+            pages: req.body,
+            doctor: req.user.username,
+            ref_no: refNoValue,
+        });
 
         // Save the patient record
         await patient.save();
 
         // Pass ref_no to the preview template
-        res.render("preview", { patientDetails: req.body, patient_id: undefined, ref_no: refNoValue });
+        res.render("preview", {
+            patientDetails: req.body,
+            patient_id: undefined,
+            ref_no: refNoValue,
+        });
     } catch (error) {
         console.error(error);
         req.flash("error", "Failed to create a new patient.");
@@ -225,7 +269,11 @@ router.post("/preview/:id", async (req, res) => {
         patientData = req.body;
 
         // Pass ref_no to the preview template along with patient_id
-        res.render("preview", { patientDetails: req.body, patient_id: patientId, ref_no: refNoValue });
+        res.render("preview", {
+            patientDetails: req.body,
+            patient_id: patientId,
+            ref_no: refNoValue,
+        });
     } catch (error) {
         console.error(error);
         req.flash("error", "Failed to fetch the default ref_no.");
@@ -233,14 +281,35 @@ router.post("/preview/:id", async (req, res) => {
     }
 });
 
+// to search a user based on ref_no, name or contact no
 router.post("/preview2", async (req, res) => {
     try {
-        const ref_no = req.body.ref_no;
-        const fullName = req.body.fullName;
+        const refNo = req.body.ref_no?.trim(); // Get and trim ref_no
+        const fullName = req.body.fullName?.trim();
         const phoneNo = req.body.phoneNo;
 
-        // Find a patient with the entered ref_no, full name, or phone number
-        Patient.findOne({ $or: [{ ref_no: ref_no }, { 'pages.fullName': fullName }, { 'pages.contact': phoneNo }],doctor: req.user.username},(err, data) => {
+        let query = {
+            doctor: req.user.username,
+            $or: [],
+        };
+
+        // Only add one of the above 3 to the query if it is not empty
+        if (refNo) {
+            query.$or.push({ ref_no: refNo });
+        } else if (fullName) {
+            query.$or.push({ "pages.fullName": fullName });
+        } else {
+            query.$or.push({ "pages.contact": phoneNo });
+        }
+
+        // If $or array is empty, handle it gracefully (no search criteria)
+        if (query.$or.length === 0) {
+            req.flash("error", "No valid search criteria provided.");
+            return res.redirect("/home");
+        }
+
+        // Execute the search query
+        Patient.findOne(query, (err, data) => {
             if (err) {
                 console.error(err);
                 req.flash("error", "Failed to find patient.");
@@ -248,15 +317,19 @@ router.post("/preview2", async (req, res) => {
             }
 
             if (!data) {
-                console.log("Not Found");
+                console.log("No Patient Found with the provided criteria.");
                 req.flash("error", "No Patient Found!");
                 return res.redirect("/home");
             }
 
-            // Render the preview page with patient data and ref_no
-            res.render("preview", { patientDetails: data.pages, patient_id: data._id, ref_no: data.ref_no });
-        }
-        );
+            // Log patient data and render preview
+            // console.log("Patient Found:", data);
+            res.render("preview", {
+                patientDetails: data.pages,
+                patient_id: data._id,
+                ref_no: data.ref_no,
+            });
+        });
     } catch (error) {
         console.error(error);
         req.flash("error", "An error occurred.");
@@ -264,9 +337,12 @@ router.post("/preview2", async (req, res) => {
     }
 });
 
-router.post("/form",(req,res)=>{              
-    res.render("preview",{patientDetails: req.body,patient_id: req.body.id}); 
-})
+router.post("/form", (req, res) => {
+    res.render("preview", {
+        patientDetails: req.body,
+        patient_id: req.body.id,
+    });
+});
 
 router.post("/form/:id", (req, res) => {
     const patientId = req.params.id;
@@ -289,46 +365,53 @@ router.post("/form/:id", (req, res) => {
         const refNoValue = patient.ref_no;
 
         // Render the form page with patient data and ref_no
-        res.render("form", { patientDetails: patient.pages, patient_id: patientId, ref_no: refNoValue });
+        res.render("form", {
+            patientDetails: patient.pages,
+            patient_id: patientId,
+            ref_no: refNoValue,
+        });
     });
 });
 
-
-router.post("/home",(req,res)=>{
+router.post("/home", (req, res) => {
     const username = req.user.username;
 
-    req.flash("success","Form submited successfully!");
-    res.render("home",{
+    req.flash("success", "Form submited successfully!");
+    res.render("home", {
         successMessage: req.flash("success"),
         errorMessage: req.flash("error"),
         successUpdatedMessage: req.flash("successUpdated"),
         patientDetails: patientData,
         patient_id: req.params.id,
-        username
+        username,
     });
-})
+});
 
-router.post("/home/:id",(req,res)=>{
-    Patient.findByIdAndUpdate(req.params.id, {'pages': patientData, 'doctor': req.user.username}, (err,patient)=>{
-        if(err) console.log(err);
-        else {
-            const ref_no = patient.ref_no;
-            const username = req.user.username;
+router.post("/home/:id", (req, res) => {
+    Patient.findByIdAndUpdate(
+        req.params.id,
+        { pages: patientData, doctor: req.user.username },
+        (err, patient) => {
+            if (err) console.log(err);
+            else {
+                const ref_no = patient.ref_no;
+                const username = req.user.username;
 
-            console.log("Successfully updated");
-            req.flash("successUpdated","Form updated successfully!")
-            req.flash("error");
-            res.render("home",{
-                successUpdatedMessage: req.flash("successUpdated"),
-                errorMessage: req.flash("error"),
-                successMessage: req.flash("success"),
-                patientDetails: patientData,
-                patient_id: req.params.id,
-                ref_no,
-                username
-            });
+                console.log("Successfully updated");
+                req.flash("successUpdated", "Form updated successfully!");
+                req.flash("error");
+                res.render("home", {
+                    successUpdatedMessage: req.flash("successUpdated"),
+                    errorMessage: req.flash("error"),
+                    successMessage: req.flash("success"),
+                    patientDetails: patientData,
+                    patient_id: req.params.id,
+                    ref_no,
+                    username,
+                });
+            }
         }
-    })
-})
+    );
+});
 
 module.exports = router;
